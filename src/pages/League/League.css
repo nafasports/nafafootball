@@ -1,0 +1,17 @@
+/* .leagues-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 50px;
+  flex-direction: column;
+  
+}
+@media (max-width: 700px) {
+  .team-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+} */

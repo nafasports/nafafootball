@@ -1,0 +1,8 @@
+.get-div-live {
+  width: 450px;
+}
+@media (max-width: 480px) {
+  .get-div-live {
+    width: 320px;
+  }
+}

@@ -1,0 +1,40 @@
+.div-plys {
+  width: 100%;
+  height: 100vh;
+}
+.chioma {
+  display: flex;
+  gap: 30px;
+}
+.ch-ply {
+  display: flex;
+}
+.dsp-ply {
+  display: flex;
+  align-items: center;
+}
+.img-dsp {
+  width: 50px;
+  height: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+.dsp-input {
+  width: 700px;
+  height: 50px;
+  border: 5px solid whitesmoke;
+  margin-bottom: 20px;
+}
+@media (max-width: 700px) {
+  .dsp-input {
+    width: 300px;
+    height: 50px;
+    border: 5px solid whitesmoke;
+    margin-bottom: 20px;
+  }
+  .chioma {
+    display: block;
+    gap: 30px;
+  }
+}

@@ -1,0 +1,31 @@
+.m-partners {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.img-wrap {
+  margin: 0px 70px;
+}
+.parnet-img {
+  width: auto;
+  height: 20vh;
+}
+.jdcg {
+  color: "white";
+}
+.p-per {
+  padding-top: 40px;
+}
+.type-words {
+}
+@media (max-width: 700px) {
+  .parnet-img {
+    width: auto;
+    height: 15vh;
+  }
+}
+@media (max-width: 480px) {
+  .parnet-img {
+    width: auto;
+    height: 10vh;
+  }
+}

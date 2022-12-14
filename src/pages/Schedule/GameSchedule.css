@@ -1,0 +1,28 @@
+.content-container {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+
+  align-items: center;
+}
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+.tab-leagues {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.tab-standings {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

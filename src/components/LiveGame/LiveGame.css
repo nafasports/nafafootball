@@ -1,0 +1,42 @@
+.live-img {
+  width: 100%;
+  height: 90vh;
+}
+.live-img2 {
+  width: 50%;
+  height: 50vh;
+}
+.live-img3 {
+  width: 50%;
+  height: 50vh;
+}
+.hyyyeertt {
+  color: whitesmoke;
+}
+@media (max-width: 760px) {
+  .live-img {
+    width: 100%;
+    height: 50vh;
+  }
+  .live-img2 {
+    width: 50%;
+    height: 40vh;
+  }
+  .live-img3 {
+    width: 50%;
+    height: 40vh;
+  }
+}
+@media (max-width: 480px) {
+  .live-img {
+    width: 100%;
+    height: auto;
+  }
+  .live-img2 {
+    width: 100%;
+    height: 35vh;
+  }
+  .live-img3 {
+    display: none;
+  }
+}

@@ -1,0 +1,96 @@
+.live-div-display {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+.live-hh {
+  margin-bottom: "15px";
+  text-align: "center";
+  font-weight: "600";
+}
+.lister {
+  width: 450px;
+  border-radius: 0px;
+}
+.grouplister2 {
+  width: 650px;
+}
+.grouplister2:hover {
+  background: none;
+}
+.nava-diva {
+  display: flex;
+  justify-content: space-between;
+}
+.item-nava:hover {
+  width: auto;
+
+  text-align: center;
+  color: gray;
+  background: gainsboro;
+}
+.item-nava:active {
+  color: blue;
+}
+@media (max-width: 1200px) {
+  .lister {
+    width: 200px;
+    border-radius: 0px;
+  }
+  .grouplister2 {
+    width: 400px;
+  }
+  .font-small-div {
+  }
+}
+@media (max-width: 920px) {
+  .lister {
+    width: 200px;
+    border-radius: 0px;
+  }
+  .grouplister2 {
+    width: 400px;
+  }
+  .font-small-div {
+  }
+}
+@media (max-width: 700px) {
+  .lister {
+    width: 150px;
+    border-radius: 0px;
+  }
+  .grouplister2 {
+    width: 350px;
+  }
+  .font-small-div {
+  }
+  .live-hh {
+    font-size: 5px;
+  }
+}
+@media (max-width: 480px) {
+  .lister {
+    width: 80px;
+    border-radius: 0px;
+    font-size: 7px;
+  }
+  .listStep {
+    display: flex;
+  }
+  .data-list {
+    font-size: 8px;
+  }
+  .grouplister2 {
+    width: 250px;
+  }
+  .font-small-div {
+    font-size: small;
+  }
+  .nava-diva {
+    display: flex;
+
+    gap: 0px;
+    font-size: 8px;
+  }
+}

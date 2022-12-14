@@ -1,0 +1,47 @@
+.div-admin-player-main {
+  background: rgb(99, 39, 120);
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ba68c8;
+}
+
+.profile-button {
+  background: initial;
+  box-shadow: none;
+  border: none;
+}
+.vj {
+  background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+  border: transparent;
+}
+.profile-button:hover {
+  background: initial;
+}
+
+.profile-button:focus {
+  background: initial;
+  box-shadow: none;
+}
+
+.profile-button:active {
+  background: initial;
+  box-shadow: none;
+}
+
+.back:hover {
+  color: #682773;
+  cursor: pointer;
+}
+
+.labels {
+  font-size: 11px;
+}
+
+.add-experience:hover {
+  background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+  /* background: #171744; */
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #ba68c8;
+}

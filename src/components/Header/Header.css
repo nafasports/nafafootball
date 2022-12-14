@@ -1,0 +1,42 @@
+.header-main-div {
+}
+.Header-mg {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  gap: 40px;
+}
+.cedy {
+  border-top-left-radius: 70px;
+  border-top-right-radius: initial;
+}
+
+@media (max-width: 700px) {
+  .Header-mg {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+  }
+  .card2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 480px) {
+  .cedy {
+    border-top-left-radius: 70px;
+    border-top-right-radius: 90px;
+  }
+  .card2 {
+    margin-top: 10px;
+  }
+}

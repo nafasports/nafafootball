@@ -1,0 +1,147 @@
+.navbar-div {
+  width: auto;
+  height: auto;
+}
+.main-div-navbar {
+  /* background-color: #171744; */
+  background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+  color: whitesmoke;
+  font-family: Poppins;
+  font-size: large;
+  font-weight: 500;
+  /* position: static; */
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  text-align: center;
+}
+.ncff {
+  background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+.menu-drop {
+  background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+}
+.menu-drop :link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  text-align: start;
+}
+.nav-img-logo {
+  width: auto;
+  height: auto;
+  max-height: 8vh;
+
+  max-width: 250px;
+  vertical-align: top;
+}
+.nav-img-logo2 {
+  width: auto;
+  height: auto;
+  max-height: 6vh;
+
+  max-width: 250px;
+  /* vertical-align: top; */
+}
+.float-div {
+  display: flex;
+  float: right;
+  color: whitesmoke;
+}
+.toggle-div {
+  color: whitesmoke;
+  font-size: large;
+  font-weight: 500;
+}
+.n-linkz:hover {
+  /* background-color: rgb(39, 17, 165); */
+  background-color: yellowgreen;
+  color: blue;
+}
+@media (max-width: 1200px) {
+  .float-div {
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+    float: none;
+    right: 0px;
+    position: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+    color: whitesmoke;
+  }
+  .nav-img-logo {
+    width: auto;
+    height: auto;
+    max-height: 8vh;
+
+    max-width: auto;
+    vertical-align: top;
+  }
+}
+
+@media (max-width: 920px) {
+  .float-div {
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+    float: none;
+    right: 0px;
+    position: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+    color: whitesmoke;
+  }
+  .nav-img-logo {
+    width: auto;
+    height: auto;
+    max-height: 8vh;
+
+    max-width: auto;
+    vertical-align: top;
+  }
+}
+
+@media (max-width: 700px) {
+  .float-div {
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+    float: none;
+    right: 0px;
+    position: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+    color: whitesmoke;
+  }
+  .nav-img-logo {
+    width: auto;
+    height: auto;
+    max-height: 8vh;
+
+    max-width: auto;
+    vertical-align: top;
+  }
+  .menu-drop :link {
+    background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,8 @@
+.userlist2-div {
+  margin-top: 30px;
+}
+@media (max-width: 920px) {
+  .userlist2-div {
+    display: none;
+  }
+}

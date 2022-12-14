@@ -1,0 +1,36 @@
+.row-mp {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.div-maint {
+  margin: auto;
+}
+@media (max-width: 760px) {
+  .row-mp {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .div-main-div {
+  }
+  .div-t {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .div-maint {
+    margin: auto;
+  }
+  .div-main-div {
+    /* display: block;
+    justify-content: center;
+    margin: 5px; */
+  }
+  .div-t {
+    margin-bottom: 20px;
+  }
+}
