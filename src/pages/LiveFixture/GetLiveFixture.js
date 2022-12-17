@@ -15,7 +15,7 @@ const GetLiveFixture = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/match/matchDays/1"
+        "https://nafasports.herokuapp.com/api/match/"
       );
       console.log(data);
       setPoster(data);
@@ -41,7 +41,7 @@ const GetLiveFixture = () => {
         <Message variant="danger">Failed</Message>
       ) : (
         <div style={{ marginTop: "40px" }}>
-          {poster?.gameFixtures?.map((spain) => (
+          {poster?.gameFixtures?.slice(0, 5).map((spain) => (
             <ListGroup
               as="ul"
               style={{ borderRadius: "0px" }}

@@ -86,6 +86,7 @@ h1 div:first-child {
   z-index: 99;
 }
 .our-team {
+  height: 45vh;
   padding: 0 0 40px;
   background: #f9f9f9;
   text-align: center;

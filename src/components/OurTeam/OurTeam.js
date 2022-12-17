@@ -1,7 +1,11 @@
 import React from "react";
 import "./OurTeam.css";
 import abtm from "../../assets/images/abtm.jpg";
+import hy2 from "../../assets/images/hy2.jpg";
 import vj from "../../assets/images/vj.jpg";
+import nag from "../../assets/images/nag.jpg";
+import tnafay from "../../assets/images/tnafay.jpg";
+import tnag from "../../assets/images/tnag.jpg";
 const OurTeam = () => {
   return (
     <div>
@@ -19,7 +23,7 @@ const OurTeam = () => {
                     <div class="teamy_preview">
                       {" "}
                       <img
-                        src={abtm}
+                        src={hy2}
                         class="teamy_avatar"
                         alt="The demo photo"
                       />{" "}
@@ -58,7 +62,7 @@ const OurTeam = () => {
                     <div class="teamy_preview">
                       {" "}
                       <img
-                        src={vj}
+                        src={nag}
                         class="teamy_avatar"
                         alt="The demo photo"
                       />{" "}
@@ -97,7 +101,7 @@ const OurTeam = () => {
                     <div class="teamy_preview">
                       {" "}
                       <img
-                        src={abtm}
+                        src={tnafay}
                         class="teamy_avatar"
                         alt="The demo photo"
                       />{" "}
@@ -136,7 +140,7 @@ const OurTeam = () => {
                     <div class="teamy_preview">
                       {" "}
                       <img
-                        src={vj}
+                        src={tnag}
                         class="teamy_avatar"
                         alt="The demo photo"
                       />{" "}

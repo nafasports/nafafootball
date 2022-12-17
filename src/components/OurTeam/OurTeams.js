@@ -1,8 +1,14 @@
 import React from "react";
 import "./OurT.css";
-import ldt from "../../assets/images/ldt.jpg";
-import vj from "../../assets/images/vj.jpg";
+
 import { Col, Row } from "react-bootstrap";
+import hy2 from "../../assets/images/hy2.jpg";
+import vj from "../../assets/images/vj.jpg";
+import nag from "../../assets/images/nag.jpg";
+import tnaf from "../../assets/images/tnaf.jpg";
+import tnafay from "../../assets/images/tnafay.jpg";
+import tnag from "../../assets/images/tnag.jpg";
+
 const OurTeams = () => {
   return (
     <div style={{ marginTop: "40px" }}>
@@ -29,7 +35,7 @@ const OurTeams = () => {
           <Row>
             <Col className="text-center py-3">
               {" "}
-              We are the Nigerian Institute of American Football Association
+              We are the Nigerian American Football Association
             </Col>
           </Row>
           <Row>
@@ -65,11 +71,12 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={hy2} />
                     </div>
                     <div class="team-content">
-                      <h3 class="title">Dana Robins</h3>
-                      <span class="post">Marketing Consultant</span>
+                      <h3 class="title">HE.Oluwarotimi Akeredolu(SAN) </h3>
+                      <span class="post">Governor Ondo state</span>
+                      <span>Chairman of the Board</span>
                     </div>
                     <ul class="social">
                       <li>
@@ -82,11 +89,11 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={ldt} />
+                      <img src={nag} />
                     </div>
                     <div class="team-content">
-                      <h3 class="title">John Doe</h3>
-                      <span class="post">Marketing Consultant</span>
+                      <h3 class="title">Lynette Mitchell</h3>
+                      <span class="post">Executive Director Marketing </span>
                     </div>
                     <ul class="social">
                       <li>
@@ -98,11 +105,13 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={tnaf} />
                     </div>
                     <div class="team-content">
-                      <h3 class="title">Markus Baas</h3>
-                      <span class="post">Financial Expert</span>
+                      <h3 class="title">Seye Obatolu</h3>
+                      <span class="post">
+                        Co-Founder/Executive Director of Finance
+                      </span>
                     </div>
                     <ul class="social">
                       <li>
@@ -115,11 +124,11 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={tnafay} />
                     </div>
                     <div class="team-content">
-                      <h3 class="title">Sophia Lee</h3>
-                      <span class="post">Customer Support</span>
+                      <h3 class="title">Babajide Akeredolu</h3>
+                      <span class="post">Founder/President</span>
                     </div>
                     <ul class="social">
                       <li>
@@ -138,7 +147,7 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={tnaf} />
                     </div>
                     <div class="team-content">
                       <h3 class="title">Ted Robbins</h3>
@@ -155,7 +164,7 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={tnaf} />
                     </div>
                     <div class="team-content">
                       <h3 class="title">Noel Flantier</h3>
@@ -171,7 +180,7 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={tnag} />
                     </div>
                     <div class="team-content">
                       <h3 class="title">Ernesto Appia</h3>
@@ -188,7 +197,7 @@ const OurTeams = () => {
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="our-team">
                     <div class="pic">
-                      <img src={vj} />
+                      <img src={tnafay} />
                     </div>
                     <div class="team-content">
                       <h3 class="title">Rosita Jimenez</h3>

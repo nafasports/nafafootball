@@ -95,7 +95,7 @@ function App() {
     <div style={{ background: "rgb(255, 255, 255)" }}>
       {/* <div style={{ background: "#D9D9D9" }}></div> */}
       {/* <BasicExample /> */}
-      <TopNav />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginScreen />} />

@@ -81,10 +81,11 @@ const Header = () => {
                   AMERICAN FOOTBALL IN NIGERIA
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  The Nigerian Institute of American Football (NAFA) is the
-                  governing body for international American football in Nigeria
-                  under the broader International Federation of American
-                  Football (NAFA) for Africa
+                  The Nigerian American Football Association (NAFA) is the
+                  recognised governing body of American football in Nigeria. We
+                  are proudly a member of IFAF (International Federation of
+                  American Football). Here is the NAFA official web portal.
+                  {/* <div> Here is the NAFA official web service portal</div> */}
                   {/* <Typewriter
                     words={[
                       " The Nigerian Institute of American Football (NAFA) is the governing body for international American football in Nigeria under the broader International Federation of American Football (NAFA) for Africa",
@@ -95,6 +96,9 @@ const Header = () => {
                     delaySpeed={1000}
                   /> */}
                 </Typography>
+                {/* <Typography variant="body2" color="text.secondary">
+                  Here is the NAFA official web service portal
+                </Typography> */}
               </CardContent>
             </CardActionArea>
           </Card>
