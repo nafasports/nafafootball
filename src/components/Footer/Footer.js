@@ -13,14 +13,15 @@ const Footer = () => {
         <div className="img-footerer-img2">
           {" "}
           <img src={ifaf} alt="mmd" className="img-footer-img2" />
+          <div>Proudly member of IFAF</div>
         </div>
         <div className="text-center">
           We are a member of the IFAF association
         </div>
         <div className="content-div">
           {" "}
-          © 2022 NFL Enterprises LLC. NFL and the NFL shield design are the
-          best. National Football League. NFL footage © NFL Productions LLC.
+          © 2022 NAFA Enterprises LLC. NAFA and the NAFA shield design are the
+          best. National Football League. NAFA footage © NAAFA Productions LLC.
         </div>
         <div className="foot-policy">
           <div>PRIVACY POLICY</div>
