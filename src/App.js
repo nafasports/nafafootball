@@ -88,6 +88,8 @@ import MatchCommentary from "./LiveGames/Commentary/MatchCommentary";
 import AdminUpdateGameInfo from "./screens/AdminScreens/AdminMatch/AdminUpdateGameInfo";
 import GameStatUpdate from "./screens/AdminScreens/AdminMatch/GameStatUpdate";
 import TopNav from "./components/topNav/TopNav";
+import ContactUs from "./pages/ContactUs/ContactUs";
+import "./App.css";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
@@ -101,6 +103,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/Adminlogin" element={<AdminLogin />} />
         <Route path="/error/notAnAdmin" element={<ErrorNotAdmin />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/AdminProfile" element={<AdminProfile />} />
         <Route path="/createCoach" element={<AdminCreateCoach />} />

@@ -307,13 +307,20 @@ const TeamPlayersApp = () => {
                   </div>
                   <div class="col-md-12">
                     <label class="labels">School</label>
-                    <input
+                    <h6>{school} </h6>
+                    <select
                       type="text"
-                      class="form-control"
-                      placeholder="enter NAFA School Level"
+                      className="form-outline mb-4"
                       value={school}
                       onChange={(e) => setSchool(e.target.value)}
-                    />
+                    >
+                      <option></option>
+                      <option>Ogun State School</option>
+                      <option>Lagos State School</option>
+                      <option>Osun State School</option>
+                      <option>Ondo State School</option>
+                      <option>Kwara State School</option>
+                    </select>
                   </div>
 
                   <div class="col-md-12">

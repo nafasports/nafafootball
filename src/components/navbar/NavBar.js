@@ -31,6 +31,10 @@ function BasicExample() {
 
     navigate("/");
   };
+  const youtube = () => {
+    window.location.href =
+      "https://www.youtube.com/watch?v=z287QVrvmMQ&feature=youtu.be";
+  };
   return (
     <div className="navbar-div">
       <Navbar className="main-div-navbar" expand="lg">
@@ -77,6 +81,18 @@ function BasicExample() {
                 </Link>
               </Nav.Link>
               <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
+                <Link
+                  to="/leagues"
+                  style={{ color: "whitesmoke", textDecoration: "none" }}
+                >
+                  Leagues
+                </Link>
+              </Nav.Link>
+              <Nav.Link
+                style={{ color: "whitesmoke" }}
+                className="n-linkz"
+                onClick={youtube}
+              >
                 Videos
               </Nav.Link>
 
@@ -161,14 +177,7 @@ function BasicExample() {
                     League Teams
                   </Link>
                 </Nav.Link>
-                <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
-                  <Link
-                    to="/leagues"
-                    style={{ color: "whitesmoke", textDecoration: "none" }}
-                  >
-                    Leagues
-                  </Link>
-                </Nav.Link>
+
                 {/* <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
                   <Link
                     to="/livegames"
@@ -177,6 +186,15 @@ function BasicExample() {
                     Scores
                   </Link>
                 </Nav.Link> */}
+                <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
+                  <Link
+                    to="/contact-us"
+                    style={{ color: "whitesmoke", textDecoration: "none" }}
+                  >
+                    {" "}
+                    Contact Us
+                  </Link>
+                </Nav.Link>
                 <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
                   <Link
                     to="/nafaRules"

@@ -105,7 +105,7 @@ const Footer = () => {
           onClick={ref}
           style={{ cursor: "pointer" }}
         >
-          Proudly a member of IFAF
+          NAFA is Proudly a member of IFAF
         </div>
         <div className="content-div">
           {" "}

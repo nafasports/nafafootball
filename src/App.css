@@ -2,8 +2,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Roboto Slab";
 }
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -40,4 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
