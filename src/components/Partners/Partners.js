@@ -32,9 +32,9 @@ const Partners = () => {
           <div className="img-wrap">
             <img src={partners2} alt="nns" className="parnet-img" />
           </div>
-          <div className="img-wrap">
+          {/* <div className="img-wrap">
             <img src={partners3} alt="nns" className="parnet-img" />
-          </div>
+          </div> */}
           <div className="img-wrap">
             <img src={partner4} alt="nns" className="parnet-img" />
           </div>
@@ -44,9 +44,9 @@ const Partners = () => {
             <div className="img-wrap">
               <img src={nafa} alt="nns" className="parnet-img" />
             </div>
-            <div className="img-wrap">
+            {/* <div className="img-wrap">
               <img src={partners3} alt="nns" className="parnet-img" />
-            </div>
+            </div> */}
             <div className="img-wrap">
               <img src={partners7} alt="nns" className="parnet-img" />
             </div>
