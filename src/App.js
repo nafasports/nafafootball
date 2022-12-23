@@ -90,6 +90,8 @@ import GameStatUpdate from "./screens/AdminScreens/AdminMatch/GameStatUpdate";
 import TopNav from "./components/topNav/TopNav";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import "./App.css";
+import UserLIstRoles from "./screens/AdminScreens/AdminRoles/UserListRoles";
+import GetRoles from "./screens/AdminScreens/AdminRoles/GetRoles";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
@@ -158,6 +160,7 @@ function App() {
           element={<TheGame step1 step2 step3 step4 step5 />}
         />
         <Route path="/theGame" element={<TheGame />} />
+        <Route path="/getAdminProfile" element={<GetRoles />} />
         <Route path="/positions" element={<Positions />} />
         <Route path="/kicks" element={<Kicks />} />
         <Route path="/postGame" element={<CheckOutGame />} />
@@ -173,7 +176,8 @@ function App() {
         <Route path="/newscatcreate" element={<AdminCreateNewsCat />} />
         <Route path="/createRole" element={<CreateRoles />} />
         <Route path="/getTeam" element={<AdminGetTeams />} />
-        <Route path="/userRole" element={<UserLIstScreen />} />
+        <Route path="/userRole" element={<UserLIstRoles />} />
+        <Route path="/getUsers" element={<UserLIstScreen />} />
         <Route path="/admin/user/:id/edit" element={<AssignRoles />} />
         <Route
           path="/admin/fixtures/commentary/:id/edit"

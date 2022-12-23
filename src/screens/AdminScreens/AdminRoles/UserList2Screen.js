@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
 
 import { FaCheck, FaEdit, FaTimes, FaTrash } from "react-icons/fa";
 import axios from "axios";
@@ -72,68 +72,7 @@ const UserLIst2Screen = () => {
         Users{" "}
       </h1>
       <h2 style={{ fontSize: "25px" }}>Client Roles</h2>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>Roles</th>
-              <th>ADMIN</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {user?.users?.map((usery) => (
-              <tr key={usery._id}>
-                <td>{usery._id}</td>
-                <td>{usery.username}</td>
-                <td>
-                  <Link to={`mailto:${usery.email}`}>{usery.email}</Link>
-                </td>
-                <td>
-                  <Link to={`mailto:${usery.roles}`}>{usery.roles}</Link>
-                </td>
-                <td>
-                  {usery.isAdmin ? (
-                    <FaCheck style={{ color: "green" }} />
-                  ) : (
-                    <>
-                      <FaTimes style={{ color: "red" }} />
-                      <small>
-                        <Link
-                          style={{ textDecoration: "none" }}
-                          to={`/admin/user/${usery._id}/adminedit`}
-                        >
-                          Make user an Admin?
-                        </Link>
-                      </small>
-                    </>
-                  )}
-                </td>
-                <td>
-                  <Link to={`/admin/user/${usery._id}/edit`}>
-                    <Button variant="light" className="btn-sm">
-                      <FaEdit />
-                    </Button>
-                  </Link>
-                  <Button variant="danger" className="btn-sm">
-                    <FaTrash />
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-
-      <div style={{ marginTop: "20px" }}>
-        <h2 style={{ fontSize: "25px" }}>NewsCaster</h2>
+      <Container>
         {loading ? (
           <Loader />
         ) : error ? (
@@ -151,18 +90,18 @@ const UserLIst2Screen = () => {
               </tr>
             </thead>
             <tbody>
-              {news?.users?.map((newsly) => (
-                <tr key={newsly._id}>
-                  <td>{newsly._id}</td>
-                  <td>{newsly.username}</td>
+              {user?.users?.map((usery) => (
+                <tr key={usery._id}>
+                  <td>{usery._id}</td>
+                  <td>{usery.username}</td>
                   <td>
-                    <Link to={`mailto:${newsly.email}`}>{newsly.email}</Link>
+                    <Link to={`mailto:${usery.email}`}>{usery.email}</Link>
                   </td>
                   <td>
-                    <Link to={`mailto:${newsly.roles}`}>{newsly.roles}</Link>
+                    <Link to={`mailto:${usery.roles}`}>{usery.roles}</Link>
                   </td>
                   <td>
-                    {newsly.isAdmin ? (
+                    {usery.isAdmin ? (
                       <FaCheck style={{ color: "green" }} />
                     ) : (
                       <>
@@ -170,7 +109,7 @@ const UserLIst2Screen = () => {
                         <small>
                           <Link
                             style={{ textDecoration: "none" }}
-                            to={`/admin/user/${newsly._id}/adminedit`}
+                            to={`/admin/user/${usery._id}/adminedit`}
                           >
                             Make user an Admin?
                           </Link>
@@ -179,7 +118,7 @@ const UserLIst2Screen = () => {
                     )}
                   </td>
                   <td>
-                    <Link to={`/admin/user/${newsly._id}/edit`}>
+                    <Link to={`/admin/user/${usery._id}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <FaEdit />
                       </Button>
@@ -193,69 +132,7 @@ const UserLIst2Screen = () => {
             </tbody>
           </Table>
         )}
-      </div>
-      <div style={{ marginTop: "20px" }}>
-        <h2 style={{ fontSize: "25px" }}>GAMES ADMIN</h2>
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <Table striped bordered hover responsive className="table-sm">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>Roles</th>
-                <th>ADMIN</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {games?.users?.map((game) => (
-                <tr key={game._id}>
-                  <td>{game._id}</td>
-                  <td>{game.username}</td>
-                  <td>
-                    <Link to={`mailto:${game.email}`}>{game.email}</Link>
-                  </td>
-                  <td>
-                    <Link to={`mailto:${game.roles}`}>{game.roles}</Link>
-                  </td>
-                  <td>
-                    {game.isAdmin ? (
-                      <FaCheck style={{ color: "green" }} />
-                    ) : (
-                      <>
-                        <FaTimes style={{ color: "red" }} />
-                        <small>
-                          <Link
-                            style={{ textDecoration: "none" }}
-                            to={`/admin/user/${game._id}/adminedit`}
-                          >
-                            Make user an Admin?
-                          </Link>
-                        </small>
-                      </>
-                    )}
-                  </td>
-                  <td>
-                    <Link to={`/admin/user/${game._id}/edit`}>
-                      <Button variant="light" className="btn-sm">
-                        <FaEdit />
-                      </Button>
-                    </Link>
-                    <Button variant="danger" className="btn-sm">
-                      <FaTrash />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </div>
+      </Container>
     </div>
   );
 };

@@ -8,8 +8,9 @@ import Message from "../../../components/Message";
 import Loader from "../../../components/Loader";
 import { Link } from "react-router-dom";
 import BasicExample from "../../../components/navbar/NavBar";
+import "./UserList2Screen.css";
 import AdminLayout from "../AdminLayout";
-const UserLIstScreen = () => {
+const UserLIstRoles = () => {
   const [user, setUser] = useState([]);
   const [news, setNews] = useState([]);
   const [games, setGames] = useState([]);
@@ -34,7 +35,7 @@ const UserLIstScreen = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/users/roles/NewsCaster"
+        "https://nafasports.herokuapp.com/api/users/roles/NewsCaster"
       );
       console.log(data);
       setNews(data);
@@ -48,7 +49,7 @@ const UserLIstScreen = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/users/roles/GAMES ADMIN"
+        "https://nafasports.herokuapp.com/api/users/roles/GAMES ADMIN"
       );
       console.log(data);
       setGames(data);
@@ -62,9 +63,18 @@ const UserLIstScreen = () => {
   return (
     <AdminLayout>
       <Container>
-        <h1 style={{ fontSize: "25px" }}>Users </h1>
-        <h2 style={{ fontSize: "25px" }}>Client Roles</h2>
-        <div className="container">
+        <h1
+          style={{
+            fontSize: "25px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          Users{" "}
+        </h1>
+
+        <div style={{ marginTop: "20px" }}>
+          <h2 style={{ fontSize: "25px" }}>NewsCaster</h2>
           {loading ? (
             <Loader />
           ) : error ? (
@@ -82,18 +92,18 @@ const UserLIstScreen = () => {
                 </tr>
               </thead>
               <tbody>
-                {user?.users?.map((usery) => (
-                  <tr key={usery._id}>
-                    <td>{usery._id}</td>
-                    <td>{usery.username}</td>
+                {news?.users?.map((newsly) => (
+                  <tr key={newsly._id}>
+                    <td>{newsly._id}</td>
+                    <td>{newsly.username}</td>
                     <td>
-                      <Link to={`mailto:${usery.email}`}>{usery.email}</Link>
+                      <Link to={`mailto:${newsly.email}`}>{newsly.email}</Link>
                     </td>
                     <td>
-                      <Link to={`mailto:${usery.roles}`}>{usery.roles}</Link>
+                      <Link to={`mailto:${newsly.roles}`}>{newsly.roles}</Link>
                     </td>
                     <td>
-                      {usery.isAdmin ? (
+                      {newsly.isAdmin ? (
                         <FaCheck style={{ color: "green" }} />
                       ) : (
                         <>
@@ -101,7 +111,7 @@ const UserLIstScreen = () => {
                           <small>
                             <Link
                               style={{ textDecoration: "none" }}
-                              to={`/admin/user/${usery._id}/adminedit`}
+                              to={`/admin/user/${newsly._id}/adminedit`}
                             >
                               Make user an Admin?
                             </Link>
@@ -110,7 +120,7 @@ const UserLIstScreen = () => {
                       )}
                     </td>
                     <td>
-                      <Link to={`/admin/user/${usery._id}/edit`}>
+                      <Link to={`/admin/user/${newsly._id}/edit`}>
                         <Button variant="light" className="btn-sm">
                           <FaEdit />
                         </Button>
@@ -124,11 +134,72 @@ const UserLIstScreen = () => {
               </tbody>
             </Table>
           )}
-          <br />
+        </div>
+        <div style={{ marginTop: "20px" }}>
+          <h2 style={{ fontSize: "25px" }}>GAMES ADMIN</h2>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : (
+            <Table striped bordered hover responsive className="table-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NAME</th>
+                  <th>EMAIL</th>
+                  <th>Roles</th>
+                  <th>ADMIN</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {games?.users?.map((game) => (
+                  <tr key={game._id}>
+                    <td>{game._id}</td>
+                    <td>{game.username}</td>
+                    <td>
+                      <Link to={`mailto:${game.email}`}>{game.email}</Link>
+                    </td>
+                    <td>
+                      <Link to={`mailto:${game.roles}`}>{game.roles}</Link>
+                    </td>
+                    <td>
+                      {games.isAdmin ? (
+                        <FaCheck style={{ color: "green" }} />
+                      ) : (
+                        <>
+                          <FaTimes style={{ color: "red" }} />
+                          <small>
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              to={`/admin/user/${game._id}/adminedit`}
+                            >
+                              Make user an Admin?
+                            </Link>
+                          </small>
+                        </>
+                      )}
+                    </td>
+                    <td>
+                      <Link to={`/admin/user/${game._id}/edit`}>
+                        <Button variant="light" className="btn-sm">
+                          <FaEdit />
+                        </Button>
+                      </Link>
+                      <Button variant="danger" className="btn-sm">
+                        <FaTrash />
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
         </div>
       </Container>
     </AdminLayout>
   );
 };
 
-export default UserLIstScreen;
+export default UserLIstRoles;

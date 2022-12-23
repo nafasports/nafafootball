@@ -151,7 +151,7 @@ function ResponsiveDrawer(props) {
                 </Dropdown.Item>
                 <Dropdown.Item>
                   {" "}
-                  <Link to="/userRole" style={{ textDecoration: "none" }}>
+                  <Link to="/getUsers" style={{ textDecoration: "none" }}>
                     Get User
                   </Link>
                 </Dropdown.Item>

@@ -21,6 +21,7 @@ import { HiUserAdd } from "react-icons/hi";
 import { FaUserTie } from "react-icons/fa";
 import UserLIst2Screen from "./AdminRoles/UserList2Screen";
 import AdminLayout from "./AdminLayout";
+import { Link } from "react-router-dom";
 const AdminProfile = () => {
   const drawerWidth = 240;
   return (
@@ -48,7 +49,13 @@ const AdminProfile = () => {
                   <ImProfile style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Profile Menu
+                  <Link
+                    to="/getAdminProfile"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    {" "}
+                    Profile Menu
+                  </Link>
                 </Typography>
               </div>
             </div>

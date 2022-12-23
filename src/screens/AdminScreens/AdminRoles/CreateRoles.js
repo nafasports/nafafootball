@@ -53,7 +53,7 @@ const CreateRoles = () => {
 
           console.log(res.data);
           toast.success("Roles Category created sucessfully");
-          navigate("/");
+          navigate("/getAdminProfile");
         } else {
           toast.error(res.data.error);
         }
