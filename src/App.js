@@ -93,6 +93,7 @@ import "./App.css";
 import SubGameAdminLayout from "./screens/SubAdminRoles/GameAdmin/SubGameAdminLayout";
 import UserLIstRoles from "./screens/AdminScreens/AdminRoles/UserListRoles";
 import GetRoles from "./screens/AdminScreens/AdminRoles/GetRoles";
+import BlogAdminLayout from "./screens/SubAdminRoles/BlogAmin/BlogAdminLayout";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
@@ -197,6 +198,16 @@ function App() {
           element={
             localStorage.getItem("roles") === "GAMES ADMIN" ? (
               <SubGameAdminLayout />
+            ) : (
+              <HomePage />
+            )
+          }
+        />
+        <Route
+          path="/blogAdmin"
+          element={
+            localStorage.getItem("roles") === "NewsCaster" ? (
+              <BlogAdminLayout />
             ) : (
               <HomePage />
             )
