@@ -90,457 +90,967 @@ function ResponsiveDrawer(props) {
               Home
             </Link>
           </div> */}
-          <li style={{ display: "flex" }}>
-            <MdAdminPanelSettings
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                className="borde-drop"
-                style={{
-                  backgroundColor: "#228B22",
-                  border: "#228B22",
-                }}
-              >
-                Admin
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/AdminProfile" style={{ textDecoration: "none" }}>
-                    Admin Profile
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-
-          <li style={{ display: "flex" }}>
-            <AiOutlineUserAdd
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Admin Roles
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/createRole" style={{ textDecoration: "none" }}>
-                    Create UserRole
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/userRole" style={{ textDecoration: "none" }}>
-                    Get Roles
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/getUsers" style={{ textDecoration: "none" }}>
-                    Get User
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <GiNewspaper
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                News Blog
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/createPost" style={{ textDecoration: "none" }}>
-                    Create News
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/newsPost" style={{ textDecoration: "none" }}>
-                    Fetch News Post
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/newscatcreate" style={{ textDecoration: "none" }}>
-                    Set a News Category
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <TbTournament
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                League
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link
-                    to="/createTournament"
-                    style={{ textDecoration: "none" }}
+          {localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <MdAdminPanelSettings
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    className="borde-drop"
+                    style={{
+                      backgroundColor: "#228B22",
+                      border: "#228B22",
+                    }}
                   >
-                    Post League
-                  </Link>{" "}
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/getTournament" style={{ textDecoration: "none" }}>
-                    Get League
-                  </Link>{" "}
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <SiMajorleaguehacking
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                League Divison
-              </Dropdown.Toggle>
+                    Admin
+                  </Dropdown.Toggle>
 
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/createLeague" style={{ textDecoration: "none" }}>
-                    Create League
-                  </Link>{" "}
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/getLeague" style={{ textDecoration: "none" }}>
-                    Get League
-                  </Link>{" "}
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <MdGames
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Games
-              </Dropdown.Toggle>
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/AdminProfile"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Admin Profile
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
 
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/postGame" style={{ textDecoration: "none" }}>
-                    Post Match Fixtures
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link
-                    to="/getGameFixtures"
-                    style={{ textDecoration: "none" }}
+              <li style={{ display: "flex" }}>
+                <AiOutlineUserAdd
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    Get Match fixtures
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link
-                    to="/getGameFixtures"
-                    style={{ textDecoration: "none" }}
+                    Admin Roles
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/createRole" style={{ textDecoration: "none" }}>
+                        Create UserRole
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/userRole" style={{ textDecoration: "none" }}>
+                        Get Roles
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/getUsers" style={{ textDecoration: "none" }}>
+                        Get User
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
+          {localStorage.getItem("roles") === "NewsCaster" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <GiNewspaper
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    Update Match
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <RiTable2
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Standings
-              </Dropdown.Toggle>
+                    News Blog
+                  </Dropdown.Toggle>
 
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/postStanding" style={{ textDecoration: "none" }}>
-                    Post Standings
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/getStandings" style={{ textDecoration: "none" }}>
-                    Get Standings
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <GiTeamUpgrade
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Teams
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/createTeam" style={{ textDecoration: "none" }}>
-                    Create Teams
-                  </Link>{" "}
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/getTeam" style={{ textDecoration: "none" }}>
-                    Get Teams
-                  </Link>{" "}
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <GiBabyfootPlayers
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Players
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  {" "}
-                  <Link to="/createPlayer" style={{ textDecoration: "none" }}>
-                    Create Player Profile
-                  </Link>{" "}
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/draftPlayer" style={{ textDecoration: "none" }}>
-                    Get Player Profile
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/activatePlayer" style={{ textDecoration: "none" }}>
-                    Activate Player
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/draftPlayer" style={{ textDecoration: "none" }}>
-                    Draft a Player
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <MdTour
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                League Teams
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  {" "}
-                  <Link
-                    to="/createTounamentTeams"
-                    style={{ textDecoration: "none" }}
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link to="/createPost" style={{ textDecoration: "none" }}>
+                        Create News
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/newsPost" style={{ textDecoration: "none" }}>
+                        Fetch News Post
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/newscatcreate"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Set a News Category
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <GiNewspaper
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    Create Tournament Teams
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  {" "}
-                  <Link
-                    to="/getTounamentTeams"
-                    style={{ textDecoration: "none" }}
-                  >
-                    Get Tournament Teams
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item></Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <MdFollowTheSigns
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Officials
-              </Dropdown.Toggle>
+                    News Blog
+                  </Dropdown.Toggle>
 
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  {" "}
-                  <Link
-                    to="/createOfficials"
-                    style={{ textDecoration: "none" }}
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link to="/createPost" style={{ textDecoration: "none" }}>
+                        Create News
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/newsPost" style={{ textDecoration: "none" }}>
+                        Fetch News Post
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/newscatcreate"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Set a News Category
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
+          {localStorage.getItem("roles") === "FA Admin" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <TbTournament
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    Create an Official
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to="/getOfficials" style={{ textDecoration: "none" }}>
-                    Get Officials
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <BsFillImageFill
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Image Gallery
-              </Dropdown.Toggle>
+                    League
+                  </Dropdown.Toggle>
 
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link
-                    to="/AdminImageGallery"
-                    style={{ textDecoration: "none" }}
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createTournament"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Post League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getTournament"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <SiMajorleaguehacking
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    Create a photo
-                  </Link>{" "}
-                </Dropdown.Item>
-                {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                    League Divison
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createLeague"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/getLeague" style={{ textDecoration: "none" }}>
+                        Get League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <TbTournament
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    League
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createTournament"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Post League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getTournament"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <SiMajorleaguehacking
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    League Divison
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createLeague"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/getLeague" style={{ textDecoration: "none" }}>
+                        Get League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
+          {localStorage.getItem("roles") === "GAMES ADMIN" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <MdGames
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{
+                      backgroundColor: "#228B22",
+                      border: "#228B22",
+                    }}
+                  >
+                    Games
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/postGame" style={{ textDecoration: "none" }}>
+                        Post Match Fixtures
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getGameFixtures"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Match fixtures
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getGameFixtures"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Update Match
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <RiTable2
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{
+                      backgroundColor: "#228B22",
+                      border: "#228B22",
+                    }}
+                  >
+                    Standings
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/postStanding"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Post Standings
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getStandings"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Standings
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <MdGames
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{
+                      backgroundColor: "#228B22",
+                      border: "#228B22",
+                    }}
+                  >
+                    Games
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link to="/postGame" style={{ textDecoration: "none" }}>
+                        Post Match Fixtures
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getGameFixtures"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Match fixtures
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getGameFixtures"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Update Match
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <RiTable2
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{
+                      backgroundColor: "#228B22",
+                      border: "#228B22",
+                    }}
+                  >
+                    Standings
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/postStanding"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Post Standings
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getStandings"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Standings
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
+          {localStorage.getItem("roles") === "FA Admin" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <GiTeamUpgrade
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Teams
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link to="/createTeam" style={{ textDecoration: "none" }}>
+                        Create Teams
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/getTeam" style={{ textDecoration: "none" }}>
+                        Get Teams
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <GiBabyfootPlayers
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Players
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Player Profile
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/draftPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Player Profile
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/activatePlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Activate Player
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/draftPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Draft a Player
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <MdTour
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    League Teams
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createTounamentTeams"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Tournament Teams
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getTounamentTeams"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Tournament Teams
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item></Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+
+              <li style={{ display: "flex" }}>
+                <MdFollowTheSigns
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Officials
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createOfficials"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create an Official
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getOfficials"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Officials
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <GiTeamUpgrade
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Teams
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link to="/createTeam" style={{ textDecoration: "none" }}>
+                        Create Teams
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/getTeam" style={{ textDecoration: "none" }}>
+                        Get Teams
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <GiBabyfootPlayers
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Players
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Player Profile
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/draftPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Player Profile
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/activatePlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Activate Player
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/draftPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Draft a Player
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <MdTour
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    League Teams
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createTounamentTeams"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Tournament Teams
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/getTounamentTeams"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Tournament Teams
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item></Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+
+              <li style={{ display: "flex" }}>
+                <MdFollowTheSigns
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Officials
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createOfficials"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create an Official
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getOfficials"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Get Officials
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
+          {localStorage.getItem("roles") === "NewsCaster" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <BsFillImageFill
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Image Gallery
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/AdminImageGallery"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create a photo
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <BsFillImageFill
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Image Gallery
+                  </Dropdown.Toggle>
 
-          <li style={{ display: "flex" }}>
-            <MdSupervisedUserCircle
-              style={{
-                fontSize: "25px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ backgroundColor: "#228B22", border: "#228B22" }}
-              >
-                Coaches
-              </Dropdown.Toggle>
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/AdminImageGallery"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create a photo
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
+          {localStorage.getItem("roles") === "FA Admin" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <MdSupervisedUserCircle
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Coaches
+                  </Dropdown.Toggle>
 
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item href="#/action-1">
-                  {" "}
-                  <Link to="/createCoach" style={{ textDecoration: "none" }}>
-                    Create a Coach profile
-                  </Link>{" "}
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-2">
-                  {" "}
-                  <Link to="/getCoaches" style={{ textDecoration: "none" }}>
-                    Get Coaches
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item href="#/action-1">
+                      {" "}
+                      <Link
+                        to="/createCoach"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create a Coach profile
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      {" "}
+                      <Link to="/getCoaches" style={{ textDecoration: "none" }}>
+                        Get Coaches
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("isAdmin") === "true" ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <MdSupervisedUserCircle
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Coaches
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item href="#/action-1">
+                      {" "}
+                      <Link
+                        to="/createCoach"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create a Coach profile
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      {" "}
+                      <Link to="/getCoaches" style={{ textDecoration: "none" }}>
+                        Get Coaches
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : null}
         </ul>
       </List>
       <Divider />

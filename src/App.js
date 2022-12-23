@@ -90,6 +90,7 @@ import GameStatUpdate from "./screens/AdminScreens/AdminMatch/GameStatUpdate";
 import TopNav from "./components/topNav/TopNav";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import "./App.css";
+import SubGameAdminLayout from "./screens/SubAdminRoles/GameAdmin/SubGameAdminLayout";
 import UserLIstRoles from "./screens/AdminScreens/AdminRoles/UserListRoles";
 import GetRoles from "./screens/AdminScreens/AdminRoles/GetRoles";
 function App() {
@@ -190,6 +191,16 @@ function App() {
         <Route
           path="/admin/fixtures/Stats/:id/edit"
           element={<GameStatUpdate />}
+        />
+        <Route
+          path="/gamesAdmin"
+          element={
+            localStorage.getItem("roles") === "GAMES ADMIN" ? (
+              <SubGameAdminLayout />
+            ) : (
+              <HomePage />
+            )
+          }
         />
         <Route path="/newsDetails/:id" element={<NewsDetails />} />
         <Route path="/admin/user/:id/adminedit" element={<AssignAdmin />} />

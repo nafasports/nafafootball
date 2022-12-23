@@ -76,7 +76,7 @@ const SignUp = () => {
           localStorage.setItem("userId", res.data._id);
           localStorage.setItem("isAdmin", res.data.isAdmin);
           localStorage.setItem("email", res.data.email);
-
+          localStorage.setItem("roles", res.data.roles);
           localStorage.setItem("username", res.data.username);
 
           console.log(res.data);

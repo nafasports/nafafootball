@@ -70,7 +70,7 @@ const UserLIstRoles = () => {
             justifyContent: "center",
           }}
         >
-          Users{" "}
+          SubAdmins
         </h1>
 
         <div style={{ marginTop: "20px" }}>

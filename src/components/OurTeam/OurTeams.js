@@ -1,9 +1,9 @@
 import React from "react";
 import "./OurT.css";
 
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import hy2 from "../../assets/images/hy2.jpg";
-import vj from "../../assets/images/vj.jpg";
+import ldt from "../../assets/images/ldt.jpg";
 import nag from "../../assets/images/nag.jpg";
 import tnaf from "../../assets/images/tnaf.jpg";
 import tnafay from "../../assets/images/tnafay.jpg";
@@ -24,35 +24,27 @@ const OurTeams = () => {
               the way.
             </p>
           </div> */}
-          <Row>
-            <Col
-              className="text-center py-3"
-              style={{ fontSize: "23px", fontWeight: "600" }}
-            >
-              WHO ARE WE
-            </Col>
-          </Row>
-          <Row>
-            <Col className="text-center py-3">
-              {" "}
-              We are the Nigerian American Football Association
-            </Col>
-          </Row>
-          <Row>
-            <Col className="text-center py-3">
-              {" "}
-              Our long history of unparalleled commitment to partnering with the
-              most extensive carriers and our ability to offer the most
-              versatile services
-            </Col>
-          </Row>
-          <h5
+          <h3
             className="text-center py-3"
             style={{ fontSize: "23px", fontWeight: "600" }}
           >
+            About Us
+          </h3>
+          <Container>
+            <div className="text-center py-3 tyr">
+              {" "}
+              The American Football Association of Nigeria is a nongovernmental
+              organization which operates as NAFA in Nigeria. It is an
+              association created to promote and growth across the 36 states of
+              the federation [including the FCT] the contact and noncontact
+              American Football. This is currently done under the NFFL AND NAFL
+              brand, in partnership with the international federation IFAF.{" "}
+            </div>
+          </Container>
+          <span class="section_hint" style={{ marginTop: "30px" }}>
+            {" "}
             Our Team
-          </h5>
-          <span class="section_hint">Nafa cordinators</span>{" "}
+          </span>{" "}
         </div>
         <div id="blogCarousel" class="carousel slide" data-ride="carousel">
           <ol class="invisible carousel-indicators">
@@ -67,8 +59,8 @@ const OurTeams = () => {
           {/* <!-- Carousel items --> */}
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="row ">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                   <div class="our-team">
                     <div class="pic">
                       <img src={hy2} />
@@ -86,7 +78,7 @@ const OurTeams = () => {
                   </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                   <div class="our-team">
                     <div class="pic">
                       <img src={nag} />
@@ -102,7 +94,7 @@ const OurTeams = () => {
                     </ul>
                   </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                   <div class="our-team">
                     <div class="pic">
                       <img src={tnaf} />
@@ -120,8 +112,23 @@ const OurTeams = () => {
                     </ul>
                   </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                  <div class="our-team">
+                    <div class="pic">
+                      <img src={ldt} />
+                    </div>
+                    <div class="team-content">
+                      <h3 class="title">Ojaideh Lawrence</h3>
+                      <span class="post">Co-Director of NAFA Football.</span>
+                    </div>
+                    <ul class="social">
+                      <li>
+                        <a href="#" class="fa fa-envelope"></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                   <div class="our-team">
                     <div class="pic">
                       <img src={tnafay} />

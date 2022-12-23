@@ -77,6 +77,7 @@ const LoginScreen = () => {
           localStorage.setItem("email", res.data.email);
 
           localStorage.setItem("username", res.data.username);
+          localStorage.setItem("roles", res.data.roles);
 
           console.log(res.data);
           toast.success("Login Sucessful", {
@@ -85,6 +86,14 @@ const LoginScreen = () => {
           {
             localStorage.getItem("isAdmin") === "true"
               ? navigate("/Adminlogin")
+              : localStorage.getItem("roles") === "GAMES ADMIN"
+              ? navigate("/gamesAdmin")
+              : localStorage.getItem("roles") === "NewsCaster"
+              ? navigate("/blogAdmin")
+              : localStorage.getItem("roles") === "Users Admin"
+              ? navigate("/UsersAdmin")
+              : localStorage.getItem("roles") === "FA Admin"
+              ? navigate("/FaAdmin")
               : navigate("/");
           }
         } else {
@@ -178,7 +187,7 @@ const LoginScreen = () => {
                   </div>
                   <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                     <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                      <h4 className="mb-4">We are NAFA News</h4>
+                      <h4 className="mb-4">We are NAFA Football.</h4>
                       <p className="small mb-0">
                         Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit, sed do eiusmod tempor incididunt ut labore et

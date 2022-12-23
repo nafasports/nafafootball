@@ -66,12 +66,7 @@ const GetRoles = () => {
             LiveGames.
           </div>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">Users Admin</div>
-            This SubAdmin is incharge of Users.
-          </div>
-        </li>
+
         <li class="list-group-item d-flex justify-content-between align-items-start">
           {" "}
           <div class="ms-2 me-auto">
@@ -102,7 +97,7 @@ const GetRoles = () => {
                       return value;
                     }
                   })
-                  .map((usery) => (
+                  ?.map((usery) => (
                     <div>
                       {" "}
                       <div class="fw-bold " style={{ color: "grey" }}>
@@ -174,12 +169,7 @@ const GetRoles = () => {
             )}
           </div>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">Users Admin</div>
-            This SubAdmin is incharge of Users.
-          </div>
-        </li>
+
         <li class="list-group-item d-flex justify-content-between align-items-start">
           {" "}
           <div class="ms-2 me-auto">
