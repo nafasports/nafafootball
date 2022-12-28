@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import "./AdminDashBoard.css";
 import { Card, CardActionArea, CardContent } from "@mui/material";
 import { Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillHome, AiOutlineUserAdd } from "react-icons/ai";
 import {
   MdAdminPanelSettings,
@@ -46,6 +46,18 @@ import AdminProfile from "./AdminProfile";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.setItem("token", "");
+    localStorage.setItem("name", "");
+    localStorage.setItem("userId", "");
+    localStorage.setItem("isAdmin", "");
+    localStorage.setItem("email", "");
+    localStorage.setItem("userId", "");
+    localStorage.setItem("username", "");
+
+    navigate("/AdminLogin");
+  };
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -121,6 +133,12 @@ function ResponsiveDrawer(props) {
                         Admin Profile
                       </Link>
                     </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={logout}
+                      style={{ color: "#00A36C" }}
+                    >
+                      Logout
+                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </li>
@@ -151,13 +169,13 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item>
                       {" "}
                       <Link to="/userRole" style={{ textDecoration: "none" }}>
-                        Get Roles
+                        View Roles
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       {" "}
                       <Link to="/getUsers" style={{ textDecoration: "none" }}>
-                        Get User
+                        View Users
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -192,7 +210,7 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item>
                       {" "}
                       <Link to="/newsPost" style={{ textDecoration: "none" }}>
-                        Fetch News Post
+                        View News
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -235,7 +253,7 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item>
                       {" "}
                       <Link to="/newsPost" style={{ textDecoration: "none" }}>
-                        Fetch News Post
+                        View News
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -267,7 +285,7 @@ function ResponsiveDrawer(props) {
                     id="dropdown-basic"
                     style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    League
+                    Tournament
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="drop-d">
@@ -276,7 +294,7 @@ function ResponsiveDrawer(props) {
                         to="/createTournament"
                         style={{ textDecoration: "none" }}
                       >
-                        Post League
+                        Create Tournament
                       </Link>{" "}
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -284,7 +302,7 @@ function ResponsiveDrawer(props) {
                         to="/getTournament"
                         style={{ textDecoration: "none" }}
                       >
-                        Get League
+                        View Tournament List
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -303,7 +321,7 @@ function ResponsiveDrawer(props) {
                     id="dropdown-basic"
                     style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    League Divison
+                    League
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="drop-d">
@@ -317,7 +335,7 @@ function ResponsiveDrawer(props) {
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to="/getLeague" style={{ textDecoration: "none" }}>
-                        Get League
+                        View League
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -339,7 +357,7 @@ function ResponsiveDrawer(props) {
                     id="dropdown-basic"
                     style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    League
+                    Tournament
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="drop-d">
@@ -348,7 +366,7 @@ function ResponsiveDrawer(props) {
                         to="/createTournament"
                         style={{ textDecoration: "none" }}
                       >
-                        Post League
+                        Create Tournament
                       </Link>{" "}
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -356,7 +374,7 @@ function ResponsiveDrawer(props) {
                         to="/getTournament"
                         style={{ textDecoration: "none" }}
                       >
-                        Get League
+                        View Tournament
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -375,7 +393,7 @@ function ResponsiveDrawer(props) {
                     id="dropdown-basic"
                     style={{ backgroundColor: "#228B22", border: "#228B22" }}
                   >
-                    League Divison
+                    League
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="drop-d">
@@ -389,7 +407,7 @@ function ResponsiveDrawer(props) {
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to="/getLeague" style={{ textDecoration: "none" }}>
-                        Get League
+                        View League
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -422,7 +440,7 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item>
                       {" "}
                       <Link to="/postGame" style={{ textDecoration: "none" }}>
-                        Post Match Fixtures
+                        Create Match Fixtures
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -431,7 +449,7 @@ function ResponsiveDrawer(props) {
                         to="/getGameFixtures"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Match fixtures
+                        View Match fixtures
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -440,7 +458,7 @@ function ResponsiveDrawer(props) {
                         to="/getGameFixtures"
                         style={{ textDecoration: "none" }}
                       >
-                        Update Match
+                        Update Match Fixtures
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -472,7 +490,7 @@ function ResponsiveDrawer(props) {
                         to="/postStanding"
                         style={{ textDecoration: "none" }}
                       >
-                        Post Standings
+                        Create Standings
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -481,7 +499,7 @@ function ResponsiveDrawer(props) {
                         to="/getStandings"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Standings
+                        View Standings
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -513,7 +531,7 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item>
                       {" "}
                       <Link to="/postGame" style={{ textDecoration: "none" }}>
-                        Post Match Fixtures
+                        Create Match Fixtures
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -522,7 +540,7 @@ function ResponsiveDrawer(props) {
                         to="/getGameFixtures"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Match fixtures
+                        View Match fixtures
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -531,7 +549,7 @@ function ResponsiveDrawer(props) {
                         to="/getGameFixtures"
                         style={{ textDecoration: "none" }}
                       >
-                        Update Match
+                        Update Match Fixtures
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -563,7 +581,7 @@ function ResponsiveDrawer(props) {
                         to="/postStanding"
                         style={{ textDecoration: "none" }}
                       >
-                        Post Standings
+                        Create Game Standings
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -572,7 +590,7 @@ function ResponsiveDrawer(props) {
                         to="/getStandings"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Standings
+                        View Game Standings
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -606,7 +624,7 @@ function ResponsiveDrawer(props) {
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to="/getTeam" style={{ textDecoration: "none" }}>
-                        Get Teams
+                        View Teams
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -643,7 +661,7 @@ function ResponsiveDrawer(props) {
                         to="/draftPlayer"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Player Profile
+                        View Player Profile
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -688,7 +706,7 @@ function ResponsiveDrawer(props) {
                         to="/createTounamentTeams"
                         style={{ textDecoration: "none" }}
                       >
-                        Create Tournament Teams
+                        Create League Teams
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -697,7 +715,7 @@ function ResponsiveDrawer(props) {
                         to="/getTounamentTeams"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Tournament Teams
+                        View Tournament Teams
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item></Dropdown.Item>
@@ -736,7 +754,7 @@ function ResponsiveDrawer(props) {
                         to="/getOfficials"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Officials
+                        View Officials
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -769,7 +787,7 @@ function ResponsiveDrawer(props) {
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <Link to="/getTeam" style={{ textDecoration: "none" }}>
-                        Get Teams
+                        View Teams
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -806,7 +824,7 @@ function ResponsiveDrawer(props) {
                         to="/draftPlayer"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Player Profile
+                        View Player Profile
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -851,7 +869,7 @@ function ResponsiveDrawer(props) {
                         to="/createTounamentTeams"
                         style={{ textDecoration: "none" }}
                       >
-                        Create Tournament Teams
+                        Create League Teams
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -860,7 +878,7 @@ function ResponsiveDrawer(props) {
                         to="/getTounamentTeams"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Tournament Teams
+                        View League Teams
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item></Dropdown.Item>
@@ -899,7 +917,7 @@ function ResponsiveDrawer(props) {
                         to="/getOfficials"
                         style={{ textDecoration: "none" }}
                       >
-                        Get Officials
+                        View Officials
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -1005,7 +1023,7 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item href="#/action-2">
                       {" "}
                       <Link to="/getCoaches" style={{ textDecoration: "none" }}>
-                        Get Coaches
+                        View Coaches
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -1043,7 +1061,7 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item href="#/action-2">
                       {" "}
                       <Link to="/getCoaches" style={{ textDecoration: "none" }}>
-                        Get Coaches
+                        View Coaches
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>

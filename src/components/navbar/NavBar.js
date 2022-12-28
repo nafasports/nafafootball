@@ -243,7 +243,7 @@ function BasicExample() {
                       }}
                     >
                       {" "}
-                      Sign In
+                      Fans
                     </Link>
                   </Nav.Link>
                 )}

@@ -11,6 +11,7 @@ import BasicExample from "../../../components/navbar/NavBar";
 import "./UserList2Screen.css";
 import AdminLayout from "../AdminLayout";
 const UserLIstRoles = () => {
+  const [filtered, setFiltered] = useState("");
   const [user, setUser] = useState([]);
   const [news, setNews] = useState([]);
   const [games, setGames] = useState([]);
@@ -20,12 +21,13 @@ const UserLIstRoles = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/users/roles/Client"
+        "https://nafasports.herokuapp.com/api/users/"
       );
       console.log(data);
       setUser(data);
       setLoading(false);
       setError(false);
+
       //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
       localStorage.setItem("AdimUserId", data.user?._id);
     };
@@ -49,7 +51,7 @@ const UserLIstRoles = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/users/roles/GAMES ADMIN"
+        "https://nafasports.herokuapp.com/api/users/roles/GameAdmin"
       );
       console.log(data);
       setGames(data);
@@ -74,7 +76,7 @@ const UserLIstRoles = () => {
         </h1>
 
         <div style={{ marginTop: "20px" }}>
-          <h2 style={{ fontSize: "25px" }}>NewsCaster</h2>
+          <h2 style={{ fontSize: "25px" }}>List Of Assigned User Roles</h2>
           {loading ? (
             <Loader />
           ) : error ? (
@@ -83,8 +85,7 @@ const UserLIstRoles = () => {
             <Table striped bordered hover responsive className="table-sm">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>NAME</th>
+                  <th>USERNAME</th>
                   <th>EMAIL</th>
                   <th>Roles</th>
                   <th>ADMIN</th>
@@ -92,50 +93,61 @@ const UserLIstRoles = () => {
                 </tr>
               </thead>
               <tbody>
-                {news?.users?.map((newsly) => (
-                  <tr key={newsly._id}>
-                    <td>{newsly._id}</td>
-                    <td>{newsly.username}</td>
-                    <td>
-                      <Link to={`mailto:${newsly.email}`}>{newsly.email}</Link>
-                    </td>
-                    <td>
-                      <Link to={`mailto:${newsly.roles}`}>{newsly.roles}</Link>
-                    </td>
-                    <td>
-                      {newsly.isAdmin ? (
-                        <FaCheck style={{ color: "green" }} />
-                      ) : (
+                {user
+                  ?.sort(function (a, b) {
+                    if (a.roles < b.roles) {
+                      return -1;
+                    }
+                    if (a.roles > b.roles) {
+                      return 1;
+                    }
+                    return 0;
+                  })
+
+                  .map((newsly) => (
+                    <tr key={newsly._id}>
+                      {newsly.roles === "Client" ? null : (
                         <>
-                          <FaTimes style={{ color: "red" }} />
-                          <small>
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              to={`/admin/user/${newsly._id}/adminedit`}
-                            >
-                              Make user an Admin?
+                          <td>{newsly.username}</td>
+                          <td>{newsly.email}</td>
+                          <td>{newsly.roles}</td>
+
+                          <td>
+                            {newsly.isAdmin ? (
+                              <FaCheck style={{ color: "green" }} />
+                            ) : (
+                              <>
+                                <FaTimes style={{ color: "red" }} />
+                                <small>
+                                  <Link
+                                    style={{ textDecoration: "none" }}
+                                    to={`/admin/user/${newsly._id}/adminedit`}
+                                  >
+                                    Make user an Admin?
+                                  </Link>
+                                </small>
+                              </>
+                            )}
+                          </td>
+                          <td>
+                            <Link to={`/admin/user/${newsly._id}/edit`}>
+                              <Button variant="light" className="btn-sm">
+                                <FaEdit />
+                              </Button>
                             </Link>
-                          </small>
+                            <Button variant="danger" className="btn-sm">
+                              <FaTrash />
+                            </Button>
+                          </td>
                         </>
                       )}
-                    </td>
-                    <td>
-                      <Link to={`/admin/user/${newsly._id}/edit`}>
-                        <Button variant="light" className="btn-sm">
-                          <FaEdit />
-                        </Button>
-                      </Link>
-                      <Button variant="danger" className="btn-sm">
-                        <FaTrash />
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
+                    </tr>
+                  ))}
               </tbody>
             </Table>
           )}
         </div>
-        <div style={{ marginTop: "20px" }}>
+        {/* <div style={{ marginTop: "20px" }}>
           <h2 style={{ fontSize: "25px" }}>GAMES ADMIN</h2>
           {loading ? (
             <Loader />
@@ -145,7 +157,6 @@ const UserLIstRoles = () => {
             <Table striped bordered hover responsive className="table-sm">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>NAME</th>
                   <th>EMAIL</th>
                   <th>Roles</th>
@@ -156,14 +167,9 @@ const UserLIstRoles = () => {
               <tbody>
                 {games?.users?.map((game) => (
                   <tr key={game._id}>
-                    <td>{game._id}</td>
                     <td>{game.username}</td>
-                    <td>
-                      <Link to={`mailto:${game.email}`}>{game.email}</Link>
-                    </td>
-                    <td>
-                      <Link to={`mailto:${game.roles}`}>{game.roles}</Link>
-                    </td>
+                    <td>{game.email}</td>
+                    <td>{game.roles}</td>
                     <td>
                       {games.isAdmin ? (
                         <FaCheck style={{ color: "green" }} />
@@ -196,7 +202,7 @@ const UserLIstRoles = () => {
               </tbody>
             </Table>
           )}
-        </div>
+        </div> */}
       </Container>
     </AdminLayout>
   );

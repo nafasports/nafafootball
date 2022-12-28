@@ -119,7 +119,7 @@ const OurTeams = () => {
                     </div>
                     <div class="team-content">
                       <h3 class="title">Ojaideh Lawrence</h3>
-                      <span class="post">Co-Director of NAFA Football.</span>
+                      <span class="post">General Secretary NAFA </span>
                     </div>
                     <ul class="social">
                       <li>

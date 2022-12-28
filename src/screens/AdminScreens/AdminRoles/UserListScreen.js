@@ -73,7 +73,6 @@ const UserLIstScreen = () => {
             <Table striped bordered hover responsive className="table-sm">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>NAME</th>
                   <th>EMAIL</th>
                   <th>Roles</th>
@@ -82,45 +81,50 @@ const UserLIstScreen = () => {
                 </tr>
               </thead>
               <tbody>
-                {user?.users?.map((usery) => (
-                  <tr key={usery._id}>
-                    <td>{usery._id}</td>
-                    <td>{usery.username}</td>
-                    <td>
-                      <Link to={`mailto:${usery.email}`}>{usery.email}</Link>
-                    </td>
-                    <td>
-                      <Link to={`mailto:${usery.roles}`}>{usery.roles}</Link>
-                    </td>
-                    <td>
-                      {usery.isAdmin ? (
-                        <FaCheck style={{ color: "green" }} />
-                      ) : (
-                        <>
-                          <FaTimes style={{ color: "red" }} />
-                          <small>
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              to={`/admin/user/${usery._id}/adminedit`}
-                            >
-                              Make user an Admin?
-                            </Link>
-                          </small>
-                        </>
-                      )}
-                    </td>
-                    <td>
-                      <Link to={`/admin/user/${usery._id}/edit`}>
-                        <Button variant="light" className="btn-sm">
-                          <FaEdit />
+                {user?.users
+                  ?.sort(function (a, b) {
+                    if (a.username < b.username) {
+                      return -1;
+                    }
+                    if (a.username > b.username) {
+                      return 1;
+                    }
+                    return 0;
+                  })
+                  .map((usery) => (
+                    <tr key={usery._id}>
+                      <td>{usery.username}</td>
+                      <td>{usery.email}</td>
+                      <td>{usery.roles}</td>
+                      <td>
+                        {usery.isAdmin ? (
+                          <FaCheck style={{ color: "green" }} />
+                        ) : (
+                          <>
+                            <FaTimes style={{ color: "red" }} />
+                            <small>
+                              <Link
+                                style={{ textDecoration: "none" }}
+                                to={`/admin/user/${usery._id}/adminedit`}
+                              >
+                                Make user an Admin?
+                              </Link>
+                            </small>
+                          </>
+                        )}
+                      </td>
+                      <td>
+                        <Link to={`/admin/user/${usery._id}/edit`}>
+                          <Button variant="light" className="btn-sm">
+                            <FaEdit />
+                          </Button>
+                        </Link>
+                        <Button variant="danger" className="btn-sm">
+                          <FaTrash />
                         </Button>
-                      </Link>
-                      <Button variant="danger" className="btn-sm">
-                        <FaTrash />
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </Table>
           )}

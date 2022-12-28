@@ -12,6 +12,22 @@ import AdminLayout from "../../AdminScreens/AdminLayout";
 import CircularIndeterminate from "../../../components/Progress";
 // toast.configure();
 const AssignRoles = () => {
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/users/roles"
+      );
+      console.log(data);
+      setNews(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
   const navigate = useNavigate();
   const { id } = useParams();
   // const redirect = location.search ? location.search.split("=")[1] : "/";
@@ -134,25 +150,31 @@ const AssignRoles = () => {
                         </div>
                         {loading && <CircularIndeterminate />}
                         <form onSubmit={submitHandler}>
-                          <p>Please create a user role here</p>
-                          <div className="form-outline mb-4">
-                            <h5>{roles} </h5>
-                            <select
-                              className="form-outline mb-4"
-                              value={roles}
-                              onChange={(e) => setRoles(e.target.value)}
-                            >
-                              <option></option>
-                              <option>Client</option>
-                              <option>NewsCaster</option>
-                              <option>GAMES ADMIN</option>
-                              <option>FA Admin</option>
-                            </select>
-                            <label className="form-label" for="form2Example11">
-                              USER ROLES
-                            </label>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-group">
+                              <label for="form_need">
+                                Please create a user role here*
+                              </label>
+                              <select
+                                id="form_need"
+                                name="need"
+                                class="form-control"
+                                required="required"
+                                value={roles}
+                                onChange={(e) => setRoles(e.target.value)}
+                                data-error="Please specify your need."
+                              >
+                                <option value="" selected disabled>
+                                  --Select Your Roles--
+                                </option>
+                                {news?.roles?.map((usery) => (
+                                  <>
+                                    <option>{usery.roles} </option>
+                                  </>
+                                ))}
+                              </select>
+                            </div>
                           </div>
-
                           {/* <div className="form-outline mb-4">
                           <input
                             type="text"

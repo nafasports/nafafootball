@@ -105,6 +105,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginScreen />} />
+        <Route
+          path="/admin/true"
+          element={Admin ? <AdminProfile /> : <HomePage />}
+        />
         <Route path="/Adminlogin" element={<AdminLogin />} />
         <Route path="/error/notAnAdmin" element={<ErrorNotAdmin />} />
         <Route path="/contact-us" element={<ContactUs />} />

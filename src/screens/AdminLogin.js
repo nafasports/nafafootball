@@ -3,6 +3,9 @@ import "./Login.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +17,7 @@ import Footer from "../components/Footer/Footer";
 const AdminLogin = () => {
   const navigate = useNavigate();
   // const redirect = location.search ? location.search.split("=")[1] : "/";
+  const rootRef = React.useRef(null);
 
   const [email, setEmail] = useState("");
 
@@ -21,7 +25,7 @@ const AdminLogin = () => {
 
   const [mode, setMode] = useState("password");
   const [loading, setLoading] = useState(false);
-
+  const [message, setMessage] = useState("");
   const userId = localStorage.getItem("userId");
   //   useEffect(() => {
   //     if (userId) {
@@ -42,6 +46,7 @@ const AdminLogin = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setLoading(true);
+
     const data = {
       email: email,
 
@@ -61,6 +66,7 @@ const AdminLogin = () => {
       .then((res) => {
         console.log(res.data);
         setLoading(false);
+        // setMessage("login succesful");
         if (res.data) {
           setEmail("");
 
@@ -79,13 +85,12 @@ const AdminLogin = () => {
           localStorage.setItem("username", res.data.username);
 
           console.log(res.data);
-          toast.success("Login Sucessful", {
-            position: toast.POSITION.TOP_LEFT,
-          });
+          toast.success("Admin Login Sucessful");
           {
             localStorage.getItem("isAdmin") === "true"
-              ? navigate(`/admin/${localStorage.getItem("isAdmin")}`)
-              : navigate("/error/notAnAdmin");
+              ? navigate("/admin/true")
+              : // ? navigate(`/admin/${localStorage.getItem("isAdmin")}`)
+                navigate("/error/notAnAdmin");
           }
         } else {
           toast.error(res.data.error);
@@ -93,12 +98,18 @@ const AdminLogin = () => {
       })
       .catch((err) => {
         setLoading(false);
-        toast.error("Invalid email & Password");
+        // setMessage("Admin Login Failed, Pls Fill in the Correct admin details");
+
+        // alert("Admin Login Failed, Pls Fill in the Correct admin details");
+        toast.error(
+          "Admin Login Failed, Pls Fill in the Correct admin details"
+        );
       });
   };
   return (
     <div style={{ width: "100%", height: "auto" }}>
       <BasicExample />
+
       <section
         className="h-100 gradient-form"
         style={{ backgroundColor: "#eee" }}
@@ -114,7 +125,7 @@ const AdminLogin = () => {
                         <img src={nafas} alt="gh" className="img-footer-img" />
                         <h4 className="mt-1 mb-5 pb-1">We are NAFA News</h4>
                       </div>
-                      {loading && <CircularIndeterminate />}
+
                       <form onSubmit={submitHandler}>
                         <p>Please login to your account</p>
 
@@ -146,16 +157,15 @@ const AdminLogin = () => {
                         </div>
 
                         <div className="text-center pt-1 mb-5 pb-1">
+                          {loading && <CircularIndeterminate />}
                           <button
                             className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
                             type="submit"
                           >
                             Log in
                           </button>
+
                           <ToastContainer />
-                          <a className="text-muted" href="#!">
-                            Forgot password?
-                          </a>
                         </div>
 
                         <div className="d-flex align-items-center justify-content-center pb-4">
