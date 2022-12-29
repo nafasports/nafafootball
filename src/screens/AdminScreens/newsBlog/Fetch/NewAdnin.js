@@ -21,7 +21,6 @@ const NewAdmin = ({ spanish }) => {
         <Table striped bordered hover responsive className="table-sm">
           <thead>
             <tr>
-              <th>ID</th>
               <th>POST IMAGE</th>
               <th>POST CAPTION</th>
               <th>POST DESC</th>
@@ -33,7 +32,6 @@ const NewAdmin = ({ spanish }) => {
           <tbody>
             {spanish?.map((usery) => (
               <tr key={usery._id}>
-                <td>{usery?._id}</td>
                 <td>
                   <img
                     src={usery?.image}

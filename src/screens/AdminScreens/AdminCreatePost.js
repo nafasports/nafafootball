@@ -11,10 +11,28 @@ import nafas from "../../assets/images/nafas.png";
 import CircularIndeterminate from "../../components/Progress";
 import AdminLayout from "./AdminLayout";
 import BasicExample from "../../components/navbar/NavBar";
+import { MenuItem, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 
 // toast.configure();
 const AdminCreatePost = () => {
   const navigate = useNavigate();
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/posts/categories"
+      );
+      console.log(data);
+      setNews(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
   // const redirect = location.search ? location.search.split("=")[1] : "/";
 
   //   localStorage.getItem("userId");
@@ -135,103 +153,94 @@ const AdminCreatePost = () => {
                         {loading && <CircularIndeterminate />}
                         <form onSubmit={submitHandler}>
                           <p>Create your news post here</p>
-
-                          <div className="form-outline mb-4">
-                            <label className="form-label" for="form2Example11">
-                              News Caption
-                            </label>
-                            <input
-                              type="text"
-                              id="form2Example11"
-                              className="form-control"
-                              placeholder="Your News must have a caption"
-                              value={caption}
-                              onChange={(e) => setCaption(e.target.value)}
-                            />
-                          </div>
-                          <div className="form-outline mb-4">
-                            <h5>{category} </h5>
-                            <select
-                              className="form-outline mb-4"
-                              value={category}
-                              onChange={(e) => setCategory(e.target.value)}
-                            >
-                              <option></option>
-                              <option>LATEST NEWS</option>
-                              <option>GOSSIP</option>
-                              <option>TRANSFER WINDOWS</option>
-                            </select>
-                            <label className="form-label" for="form2Example11">
-                              News Category
-                            </label>
-                          </div>
-                          {/* <div className="form-outline mb-4">
-                          <input
-                            type="text"
-                            id="form2Example11"
-                            className="form-control"
-                            placeholder="Category of your News Post"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                          />
-                          <label className="form-label" for="form2Example11">
-                            News Category
-                          </label>
-                        </div> */}
-                          <div className="form-outline mb-4">
-                            <label className="form-label" for="form2Example22">
-                              News Description
-                            </label>
-                            <input
-                              type="text"
-                              id="form2Example22"
-                              className="form-control"
-                              value={desc}
-                              onChange={(e) => setDesc(e.target.value)}
-                            />
-                          </div>
-                          <div className="form-outline mb-4">
-                            <div class="form-outline">
-                              <label class="form-label" for="textAreaExample">
-                                News Content
-                              </label>
-                              {/* <input
-                              type="text"
-                              id="form2Example22"
-                              className="form-control"
-                              value={content}
-                              onChange={(e) => setContent(e.target.value)}
-                            /> */}
-                              <textarea
-                                class="form-control"
-                                id="textAreaExample"
-                                rows="4"
-                                value={content}
-                                onChange={(e) => setContent(e.target.value)}
+                          <Box
+                            // component="form"
+                            sx={{
+                              "& .MuiTextField-root": { m: 1, width: "36ch" },
+                            }}
+                            noValidate
+                            autoComplete="off"
+                          >
+                            <div className="form-outline mb-4">
+                              <TextField
+                                required
+                                id="outlined-required"
+                                label="News Caption"
+                                value={caption}
+                                onChange={(e) => setCaption(e.target.value)}
+                                defaultValue="Your News must have a caption"
                               />
                             </div>
-                          </div>
-                          <div className="form-outline mb-4">
-                            <label className="form-label" for="form2Example22">
-                              Choose a file
-                            </label>
-                            <input
-                              id="form2Example22"
-                              className="form-control"
-                              type="file"
-                              // multiple
-                              accept=".jpeg, .png, .jpg, "
-                              onChange={(e) => uploadimage(e)}
-                            />
-                          </div>
-                          <div className="text-center pt-1 mb-5 pb-1">
-                            <button
-                              className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                              type="submit"
-                            >
-                              Create a Post
-                            </button>
-                          </div>
+
+                            <div className="form-outline mb-4">
+                              <TextField
+                                id="outlined-select-currency-native"
+                                select
+                                label="News Category"
+                                // defaultValue="EUR"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                SelectProps={{
+                                  native: true,
+                                }}
+                                // helperText="Please select your currency"
+                              >
+                                {news?.categories?.map((usery) => (
+                                  <>
+                                    <option>{usery.category}</option>
+                                  </>
+                                ))}
+                              </TextField>
+                            </div>
+
+                            <div className="form-outline mb-4">
+                              <TextField
+                                required
+                                id="outlined-required"
+                                label="News Description"
+                                value={desc}
+                                onChange={(e) => setDesc(e.target.value)}
+                                defaultValue="News Description"
+                              />
+                            </div>
+                            <div className="form-outline mb-4">
+                              <TextField
+                                required
+                                id="outlined-multiline-static"
+                                label="News Content"
+                                multiline
+                                rows={4}
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
+                                defaultValue=" News Content"
+                              />
+                            </div>
+                            <div className="form-outline mb-4">
+                              <label
+                                className="form-label"
+                                for="form2Example22"
+                              >
+                                Choose an Image file
+                              </label>
+                              <input
+                                id="form2Example22"
+                                className="form-control"
+                                type="file"
+                                // multiple
+                                accept=".jpeg, .png, .jpg, "
+                                onChange={(e) => uploadimage(e)}
+                              />
+                            </div>
+                            <div className="text-center pt-1 mb-5 pb-1">
+                              {loading && <CircularIndeterminate />}
+                              <button
+                                className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                type="submit"
+                              >
+                                Create a Post
+                              </button>
+                            </div>
+                          </Box>
                         </form>
                       </div>
                     </div>

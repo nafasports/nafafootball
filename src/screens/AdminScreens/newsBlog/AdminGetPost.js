@@ -26,7 +26,7 @@ const AdminGetPost = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/posts/categories/LATEST NEWS"
+        "https://nafasports.herokuapp.com/api/posts/"
       );
       console.log(data);
       setPoster(data);
@@ -56,29 +56,30 @@ const AdminGetPost = () => {
   }, []);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = poster?.posts?.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = poster?.slice(firstPostIndex, lastPostIndex);
   const currentPoster = spanish?.posts?.slice(firstPostIndex, lastPostIndex);
   return (
     <AdminLayout>
-      {/* <AdminDashboard /> */}
-      <div>
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">Failed</Message>
-        ) : (
-          <div>
+      <Container>
+        {/* <AdminDashboard /> */}
+        <div>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">Failed</Message>
+          ) : (
             <div>
-              <NewsAdminFetch poster={currentPosts} />
-              {/* <Analysis spain={currentPosts} /> */}
-              <Pagination
-                totalPosts={poster?.posts?.length}
-                postsPerPage={postsPerPage}
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-              />
-            </div>
-            {/* <Row
+              <div>
+                <NewsAdminFetch poster={currentPosts} />
+                {/* <Analysis spain={currentPosts} /> */}
+                <Pagination
+                  totalPosts={poster?.posts?.length}
+                  postsPerPage={postsPerPage}
+                  setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
+                />
+              </div>
+              {/* <Row
             className="row-mp"
             style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
           >
@@ -94,25 +95,26 @@ const AdminGetPost = () => {
               </Col>
             ))}
           </Row> */}
-            {/* </Carousel> */}
-          </div>
-        )}
-        <div style={{ marginTop: "40px" }}>
-          <h6 className="Div-h6-v">Gossip</h6>
-          <hr className="hr" />
-          <div>
-            <NewAdmin spanish={currentPoster} />
-            {/* <Analysis spain={currentPosts} /> */}
-            <Pagination
-              totalPosts={poster?.posts?.length}
-              postsPerPage={postsPerPage}
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
-          </div>
-          {/* <div className="more-analysis">MORE ANALYSIS</div> */}
+              {/* </Carousel> */}
+            </div>
+          )}
+          {/* <div style={{ marginTop: "40px" }}>
+            <h6 className="Div-h6-v">Gossip</h6>
+            <hr className="hr" />
+            <div>
+              <NewAdmin spanish={currentPoster} />
+             
+              <Pagination
+                totalPosts={poster?.posts?.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              />
+            </div>
+           
+          </div> */}
         </div>
-      </div>
+      </Container>
     </AdminLayout>
   );
 };

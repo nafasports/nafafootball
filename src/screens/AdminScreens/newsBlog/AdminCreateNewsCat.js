@@ -57,7 +57,7 @@ const AdminCreateNewsCat = () => {
 
           console.log(res.data);
           toast.success("News Category created sucessfully");
-          navigate("/");
+          navigate("/createPost");
         } else {
           toast.error(res.data.error);
         }
