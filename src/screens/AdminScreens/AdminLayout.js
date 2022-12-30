@@ -43,6 +43,7 @@ import UserLIst2Screen from "./AdminRoles/UserList2Screen";
 import NewsAdminFetch from "./newsBlog/Fetch/NewsAdminFetch";
 import AdminGetPost from "./newsBlog/AdminGetPost";
 import AdminProfile from "./AdminProfile";
+import { CgPathDivide } from "react-icons/cg";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -341,6 +342,42 @@ function ResponsiveDrawer(props) {
                   </Dropdown.Menu>
                 </Dropdown>
               </li>
+              <li style={{ display: "flex" }}>
+                <CgPathDivide
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    League Division
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createDivision"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create League Division
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getDivision"
+                        style={{ textDecoration: "none" }}
+                      >
+                        View League Divsion
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
             </div>
           ) : localStorage.getItem("isAdmin") === "true" ? (
             <div>
@@ -408,6 +445,42 @@ function ResponsiveDrawer(props) {
                     <Dropdown.Item>
                       <Link to="/getLeague" style={{ textDecoration: "none" }}>
                         View League
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <CgPathDivide
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    League Division
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createDivision"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create League Division
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getDivision"
+                        style={{ textDecoration: "none" }}
+                      >
+                        View League Divsion
                       </Link>{" "}
                     </Dropdown.Item>
                   </Dropdown.Menu>

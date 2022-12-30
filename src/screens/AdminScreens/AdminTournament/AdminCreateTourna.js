@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 import BasicExample from "../../../components/navbar/NavBar";
 import anfl from "../../../assets/images/anfl.png";
 import AdminLayout from "../AdminLayout";
+import { TextField } from "@mui/material";
+import { Box } from "@mui/system";
 const AdminCreateTourna = () => {
   const navigate = useNavigate();
   const [tournament, setTournament] = useState("");
@@ -121,53 +123,57 @@ const AdminCreateTourna = () => {
           <div className="card-body py-5 px-md-5">
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
-                <h2 className="fw-bold mb-5">Create a League</h2>
-                {loading && <CircularIndeterminate />}
+                <h2 className="fw-bold mb-5">Create a Tournament</h2>
+
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Tournament
-                        </label>
-                        <h5>{tournament} </h5>
-                        <select
-                          className="form-outline mb-4"
-                          value={tournament}
-                          onChange={(e) => setTournament(e.target.value)}
-                        >
-                          <option></option>
-                          <option>NAFL</option>
-                          <option>NFFL</option>
-                        </select>
-                      </div>
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "36ch" },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Tournament Name"
+                            value={tournament}
+                            onChange={(e) => setTournament(e.target.value)}
+                            defaultValue="Tournament Name"
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label className="form-label" for="form2Example22">
+                            Choose an image file
+                          </label>
+                          <input
+                            id="form2Example22"
+                            className="form-control"
+                            type="file"
+                            multiple
+                            accept=".jpeg, .png, .jpg, "
+                            onChange={(e) => uploadimage(e)}
+                          />
+                        </div>
+                      </Box>
                     </div>
                   </div>
 
                   {/* <!-- Password input --> */}
 
-                  <div className="form-outline mb-4">
-                    <label className="form-label" for="form2Example22">
-                      Choose a file
-                    </label>
-                    <input
-                      id="form2Example22"
-                      className="form-control"
-                      type="file"
-                      multiple
-                      accept=".jpeg, .png, .jpg, "
-                      onChange={(e) => uploadimage(e)}
-                    />
-                  </div>
-
                   {/* <!-- Submit button --> */}
+                  {loading && <CircularIndeterminate />}
                   <button
                     type="submit"
                     className="btn btn-primary btn-block mb-4"
                     style={{ background: "green" }}
                   >
-                    Create a League
+                    Create a Tournament
                   </button>
                 </form>
               </div>

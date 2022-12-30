@@ -13,10 +13,32 @@ import { Link } from "react-router-dom";
 import BasicExample from "../../../components/navbar/NavBar";
 import anfl from "../../../assets/images/anfl.png";
 import AdminLayout from "../AdminLayout";
+import { Box } from "@mui/system";
+import { TextField } from "@mui/material";
 const AdminCreateLeague = () => {
   const navigate = useNavigate();
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/tournament"
+      );
+      console.log(data);
+      setNews(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
   const [tournament, setTournament] = useState("");
   const [leagueName, setLeagueName] = useState("");
+  const [season, setSeason] = useState("");
+  const [state, setState] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [abrv, setAbrv] = useState("");
 
   const [image, setImage] = useState([]);
@@ -51,7 +73,10 @@ const AdminCreateLeague = () => {
       tournament: tournament,
       leagueName: leagueName,
       image: image,
-
+      season: season,
+      state: state,
+      startDate: startDate,
+      endDate: endDate,
       abrv: abrv,
     };
 
@@ -73,9 +98,11 @@ const AdminCreateLeague = () => {
         if (res.data) {
           setTournament("");
           setLeagueName("");
-
+          setSeason("");
           setAbrv("");
-
+          setState("");
+          setStartDate("");
+          setEndDate("");
           setImage("");
 
           //   const items = data;
@@ -129,76 +156,156 @@ const AdminCreateLeague = () => {
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
                 <h2 className="fw-bold mb-5">Create a League</h2>
-                {loading && <CircularIndeterminate />}
+
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
                   <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Tournament
-                        </label>
-                        <h5>{tournament} </h5>
-                        <select
-                          className="form-outline mb-4"
+                    <Box
+                      // component="form"
+                      sx={{
+                        "& .MuiTextField-root": { m: 1, width: "36ch" },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <div className="col-md-6 mb-4">
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Select Tournament"
+                          // defaultValue="EUR"
                           value={tournament}
                           onChange={(e) => setTournament(e.target.value)}
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
                         >
                           <option></option>
-                          <option>Tackle Tournament</option>
-                          <option>Flag Tournament</option>
-                        </select>
+                          {news?.tournaments?.map((usery) => (
+                            <>
+                              <option>{usery.tournament}</option>
+                            </>
+                          ))}
+                        </TextField>
                       </div>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example2">
-                          League Name
+
+                      <div className="col-md-6 mb-4">
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="League Name"
+                            value={leagueName}
+                            onChange={(e) => setLeagueName(e.target.value)}
+                            defaultValue="League Name"
+                          />
+                        </div>
+                      </div>
+                    </Box>
+                  </div>
+                  <div className="row">
+                    <Box
+                      // component="form"
+                      sx={{
+                        "& .MuiTextField-root": { m: 1, width: "36ch" },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <div className="col-md-6 mb-4">
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="State"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            defaultValue="State"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-md-6 mb-4">
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Season"
+                            value={season}
+                            onChange={(e) => setSeason(e.target.value)}
+                            defaultValue="Season"
+                          />
+                        </div>
+                      </div>
+                    </Box>
+                  </div>
+                  <div className="row">
+                    <Box
+                      // component="form"
+                      sx={{
+                        "& .MuiTextField-root": { m: 1, width: "36ch" },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <div className="col-md-6 mb-4">
+                        <label className="form-label" for="form2Example11">
+                          Start Date
                         </label>
-                        <input
-                          type="text"
-                          id="form3Example2"
-                          className="form-control"
-                          value={leagueName}
-                          onChange={(e) => setLeagueName(e.target.value)}
-                        />
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            // label="Start Date"
+                            type="date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                          />
+                        </div>
                       </div>
+                      <div className="col-md-6 mb-4">
+                        <label className="form-label" for="form2Example11">
+                          End Date
+                        </label>
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            type="date"
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </Box>
+                  </div>
+
+                  <Box
+                    sx={{
+                      "& .MuiTextField-root": { m: 1, width: "36ch" },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <div className="col-md-6 mb-4">
+                      <label className="form-label" for="form2Example11">
+                        Choose an Image File
+                      </label>
+                      <TextField
+                        required
+                        id="outlined-required"
+                        type="file"
+                        multiple
+                        accept=".jpeg, .png, .jpg, "
+                        onChange={(e) => uploadimage(e)}
+                      />
                     </div>
-                  </div>
-
-                  {/* <!-- Email input --> */}
-                  <div className="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">
-                      Team Abbrevation
-                    </label>
-                    <input
-                      type="text"
-                      id="form3Example3"
-                      className="form-control"
-                      value={abrv}
-                      onChange={(e) => setAbrv(e.target.value)}
-                    />
-                  </div>
-
-                  {/* <!-- Password input --> */}
-
-                  <div className="form-outline mb-4">
-                    <label className="form-label" for="form2Example22">
-                      Choose a file
-                    </label>
-                    <input
-                      id="form2Example22"
-                      className="form-control"
-                      type="file"
-                      multiple
-                      accept=".jpeg, .png, .jpg, "
-                      onChange={(e) => uploadimage(e)}
-                    />
-                  </div>
-
+                  </Box>
+                  {loading && <CircularIndeterminate />}
                   {/* <!-- Submit button --> */}
                   <button
                     type="submit"
+                    style={{ background: "green" }}
                     className="btn btn-primary btn-block mb-4"
                   >
                     Create a League

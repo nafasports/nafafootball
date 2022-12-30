@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
 
 import { FaCheck, FaEdit, FaTimes, FaTrash } from "react-icons/fa";
 import axios from "axios";
@@ -35,51 +35,51 @@ const GetAdminTournament = () => {
 
   return (
     <AdminLayout>
-      <h1 style={{ fontSize: "25px" }}>Tournament </h1>
+      <Container>
+        <h1 style={{ fontSize: "25px" }}>Tournament </h1>
 
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>LEAGUE LOGO</th>
-              <th>LEAGUE</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {user?.tournaments?.map((usery) => (
-              <tr key={usery._id}>
-                <td>{usery._id}</td>
-                <td style={{ color: "green" }}>
-                  {" "}
-                  <img
-                    src={usery.logo}
-                    alt="jj"
-                    style={{ width: "auto", height: "8vh" }}
-                  />
-                </td>
-                <td style={{ color: "green" }}>{usery.tournament}</td>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
+              <tr>
+                <th>TOURNAMENT LOGO</th>
+                <th>TOURNAMENT NAME</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {user?.tournaments?.map((usery) => (
+                <tr key={usery._id}>
+                  <td style={{ color: "green" }}>
+                    {" "}
+                    <img
+                      src={usery.logo}
+                      alt="jj"
+                      style={{ width: "100px", height: "8vh" }}
+                    />
+                  </td>
+                  <td style={{ color: "green" }}>{usery.tournament}</td>
 
-                <td>
-                  <Link to={`/admin/tournament/${usery._id}/edit`}>
+                  <td>
+                    {/* <Link to={`/admin/tournament/${usery._id}/edit`}> */}
                     <Button variant="light" className="btn-sm">
                       <FaEdit />
                     </Button>
-                  </Link>
-                  <Button variant="danger" className="btn-sm">
-                    <FaTrash />
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
+                    {/* </Link> */}
+                    <Button variant="danger" className="btn-sm">
+                      <FaTrash />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </Container>
       {/* <br /> */}
     </AdminLayout>
   );

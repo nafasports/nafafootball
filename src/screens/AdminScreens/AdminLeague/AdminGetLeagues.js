@@ -44,38 +44,37 @@ const AdminGetLeagues = () => {
         <Table striped bordered hover responsive className="table-sm">
           <thead>
             <tr>
-              <th>ID</th>
               <th>LEAGUE LOGO</th>
               <th>TOURNAMENT</th>
               <th>LEAGUE NAME</th>
-              <th>LEAGUE ABBREVATION</th>
+              <th>STATE</th>
+              <th>SEASON</th>
+              <th>START DATE</th>
+              <th>END DATE</th>
             </tr>
           </thead>
           <tbody>
             {user?.leagues?.map((usery) => (
               <tr key={usery._id}>
-                <td>{usery._id}</td>
                 <td>
                   <img
                     src={usery.image}
                     alt="jj"
-                    style={{ width: "auto", height: "8vh" }}
+                    style={{ width: "80px", height: "8vh" }}
                   />
                 </td>
+                <td>{usery.tournament}</td>
+                <td>{usery.leagueName}</td>
+                <td>{usery.state}</td>
+                <td>{usery.season}</td>
+                <td>{usery.startDate}</td>
+                <td>{usery.endDate}</td>
                 <td>
-                  <Link to={`mailto:${usery.email}`}>{usery.tournament}</Link>
-                </td>
-                <td>
-                  <Link to={`mailto:${usery.roles}`}>{usery.leagueName}</Link>
-                </td>
-                <td>{usery.abrv}</td>
-
-                <td>
-                  <Link to={`/admin/user/${usery._id}/edit`}>
-                    <Button variant="light" className="btn-sm">
-                      <FaEdit />
-                    </Button>
-                  </Link>
+                  {/* <Link to={`/admin/user/${usery._id}/edit`}> */}
+                  <Button variant="light" className="btn-sm">
+                    <FaEdit />
+                  </Button>
+                  {/* </Link> */}
                   <Button variant="danger" className="btn-sm">
                     <FaTrash />
                   </Button>

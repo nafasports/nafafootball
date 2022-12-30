@@ -113,7 +113,10 @@ function App() {
         <Route path="/error/notAnAdmin" element={<ErrorNotAdmin />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/AdminProfile" element={<AdminProfile />} />
+        <Route
+          path="/AdminProfile"
+          element={Admin ? <AdminProfile /> : <HomePage />}
+        />
         <Route path="/createCoach" element={<AdminCreateCoach />} />
         <Route path="/createOfficials" element={<AdminCreateOfficials />} />
         <Route path="/getOfficials" element={<AdminGetOfficials />} />
