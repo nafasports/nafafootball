@@ -94,6 +94,9 @@ import SubGameAdminLayout from "./screens/SubAdminRoles/GameAdmin/SubGameAdminLa
 import UserLIstRoles from "./screens/AdminScreens/AdminRoles/UserListRoles";
 import GetRoles from "./screens/AdminScreens/AdminRoles/GetRoles";
 import BlogAdminLayout from "./screens/SubAdminRoles/BlogAmin/BlogAdminLayout";
+import About from "./components/AboutUs/About";
+import CreateLeagueDivision from "./screens/AdminScreens/AdminDivision/CreateLeagueDivision";
+import AdminGetDivision from "./screens/AdminScreens/AdminDivision/AdminGetDivision";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
@@ -256,6 +259,9 @@ function App() {
         />
         <Route path="/gameInfo/:id" element={<MatchInfo />} />
         <Route path="/matchdayCommentary/:id" element={<MatchCommentary />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/createDivision" element={<CreateLeagueDivision />} />
+        <Route path="/getDivision" element={<AdminGetDivision />} />
       </Routes>
     </div>
   );

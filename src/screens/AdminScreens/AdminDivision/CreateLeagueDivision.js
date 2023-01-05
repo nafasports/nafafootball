@@ -11,15 +11,30 @@ import CircularIndeterminate from "../../../components/Progress";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import BasicExample from "../../../components/navbar/NavBar";
-import AdminLayout from "../AdminLayout";
 import anfl from "../../../assets/images/anfl.png";
-const AdminCreateTeams = () => {
+import AdminLayout from "../AdminLayout";
+import { Box } from "@mui/system";
+import { TextField } from "@mui/material";
+const CreateLeagueDivision = () => {
   const navigate = useNavigate();
-  const [tournament, setTournament] = useState("");
-  const [league, setLeague] = useState("");
-  const [teamName, setTeamName] = useState("");
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/league"
+      );
+      console.log(data);
+      setNews(data);
+      // setLoading(false);
 
-  const [teamShorthand, setTeamShorthand] = useState("");
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
+  const [leagueName, setLeagueName] = useState("");
+  const [DivisionName, setDivisionName] = useState("");
 
   const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -50,12 +65,9 @@ const AdminCreateTeams = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const data = {
-      tournament: tournament,
-      league: league,
+      DivisionName: DivisionName,
+      leagueName: leagueName,
       image: image,
-
-      teamName: teamName,
-      teamShorthand: teamShorthand,
     };
 
     setLoading(true);
@@ -68,17 +80,15 @@ const AdminCreateTeams = () => {
     };
 
     axios
-      .post("https://nafasports.herokuapp.com/api/teams", data, headers)
+      .post("https://nafasports.herokuapp.com/api/divisions", data, headers)
 
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
-          setTournament("");
-          setLeague("");
+          setDivisionName("");
+          setLeagueName("");
 
-          setTeamName("");
-          setTeamShorthand("");
           setImage("");
 
           //   const items = data;
@@ -92,14 +102,14 @@ const AdminCreateTeams = () => {
 
           console.log(res.data);
           toast.success("Post is sucessful");
-          navigate("/getTeam");
+          navigate("/getDivision");
         } else {
           toast.error(res.data.error);
         }
       })
       .catch((err) => {
         setLoading(false);
-        toast.error("Invalid email & Password");
+        toast.error("Incorrect Inputs, Fill in the appopraite data");
       });
   };
   return (
@@ -131,60 +141,74 @@ const AdminCreateTeams = () => {
           <div className="card-body py-5 px-md-5">
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
-                <h2 className="fw-bold mb-5">Create a Team</h2>
-                {loading && <CircularIndeterminate />}
+                <h2 className="fw-bold mb-5">Create a League Division</h2>
+
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
+                  <div className="row">
+                    <Box
+                      // component="form"
+                      sx={{
+                        "& .MuiTextField-root": { m: 1, width: "25ch " },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <div className="col-md-6 mb-4">
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Select League"
+                          // defaultValue="EUR"
+                          value={leagueName}
+                          onChange={(e) => setLeagueName(e.target.value)}
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {news?.leagues?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.leagueName}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </div>
 
-                  {/* <!-- Email input --> */}
-                  <div className="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">
-                      Team Name
-                    </label>
-                    <input
-                      type="text"
-                      id="form3Example3"
-                      className="form-control"
-                      value={teamName}
-                      onChange={(e) => setTeamName(e.target.value)}
-                    />
+                      <div className="col-md-6 mb-4">
+                        <div className="form-outline mb-4">
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="League Division Name"
+                            value={DivisionName}
+                            onChange={(e) => setDivisionName(e.target.value)}
+                            defaultValue="League Division Name"
+                          />
+                        </div>
+                      </div>
+                    </Box>
                   </div>
 
-                  {/* <!-- Password input --> */}
-                  {/* <div className="form-outline mb-4">
-                    <label className="form-label" for="form3Example4">
-                      Team Abbrevation
-                    </label>
-                    <input
-                      type="text"
-                      id="form3Example4"
-                      className="form-control"
-                      value={teamShorthand}
-                      onChange={(e) => setTeamShorthand(e.target.value)}
-                    />
-                  </div> */}
-
-                  <div className="form-outline mb-4">
-                    <label className="form-label" for="form2Example22">
-                      Choose a file
-                    </label>
-                    <input
-                      id="form2Example22"
-                      className="form-control"
-                      type="file"
-                      multiple
-                      accept=".jpeg, .png, .jpg, "
-                      onChange={(e) => uploadimage(e)}
-                    />
-                  </div>
-
+                  {/* <Box
+                    sx={{
+                      "& .MuiTextField-root": { m: 1, width: "36ch" },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    
+                  </Box> */}
+                  {loading && <CircularIndeterminate />}
                   {/* <!-- Submit button --> */}
                   <button
                     type="submit"
                     style={{ background: "green" }}
                     className="btn btn-primary btn-block mb-4"
                   >
-                    Create a Team
+                    Create a League Diviosn
                   </button>
                 </form>
               </div>
@@ -197,4 +221,4 @@ const AdminCreateTeams = () => {
   );
 };
 
-export default AdminCreateTeams;
+export default CreateLeagueDivision;

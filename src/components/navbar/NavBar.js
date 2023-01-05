@@ -178,14 +178,14 @@ function BasicExample() {
                   </Link>
                 </Nav.Link>
 
-                {/* <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
+                <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
                   <Link
-                    to="/livegames"
+                    to="/about-us"
                     style={{ textDecoration: "none", color: "whitesmoke" }}
                   >
-                    Scores
+                    About Us
                   </Link>
-                </Nav.Link> */}
+                </Nav.Link>
                 <Nav.Link style={{ color: "whitesmoke" }} className="n-linkz">
                   <Link
                     to="/contact-us"

@@ -4,9 +4,21 @@
   box-sizing: border-box;
   font-family: "Roboto Slab";
 }
+.input-index-input {
+  width: 36ch;
+}
+@media (min-width: 468px) {
+  .input-index-input {
+    width: 20ch;
+  }
+}
+.input-index-input {
+  /* width: 65%; */
+}
 /* .App {
   text-align: center;
 }
+
 
 .App-logo {
   height: 40vmin;
