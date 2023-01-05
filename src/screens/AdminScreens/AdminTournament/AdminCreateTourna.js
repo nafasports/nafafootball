@@ -132,7 +132,7 @@ const AdminCreateTourna = () => {
                       <Box
                         // component="form"
                         sx={{
-                          "& .MuiTextField-root": { m: 1, width: "36ch" },
+                          "& .MuiTextField-root": { m: 1, width: "25ch" },
                         }}
                         noValidate
                         autoComplete="off"
@@ -160,6 +160,14 @@ const AdminCreateTourna = () => {
                             onChange={(e) => uploadimage(e)}
                           />
                         </div>
+                        {loading && <CircularIndeterminate />}
+                        <button
+                          type="submit"
+                          className="btn btn-primary btn-block mb-4"
+                          style={{ background: "green" }}
+                        >
+                          Create a Tournament
+                        </button>
                       </Box>
                     </div>
                   </div>
@@ -167,14 +175,6 @@ const AdminCreateTourna = () => {
                   {/* <!-- Password input --> */}
 
                   {/* <!-- Submit button --> */}
-                  {loading && <CircularIndeterminate />}
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-block mb-4"
-                    style={{ background: "green" }}
-                  >
-                    Create a Tournament
-                  </button>
                 </form>
               </div>
             </div>

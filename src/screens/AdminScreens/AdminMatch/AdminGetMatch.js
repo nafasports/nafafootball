@@ -21,7 +21,7 @@ const AdminGetMatch = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/match/matchDays/1"
+        "https://nafasports.herokuapp.com/api/match/"
       );
       console.log(data);
       setUser(data);
@@ -36,7 +36,7 @@ const AdminGetMatch = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/match/matchDays/2"
+        "https://nafasports.herokuapp.com/api/match/"
       );
       console.log(data);
       setNews(data);
@@ -51,191 +51,97 @@ const AdminGetMatch = () => {
 
   return (
     <AdminLayout>
-      <h1 style={{ fontSize: "25px" }}>Game Fixtures & Result </h1>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-
-              <th>TOURNAMENT</th>
-              <th>LEAGUE NAME</th>
-              <th>MATCH DAY </th>
-              <th>TIME</th>
-              <th>DATE</th>
-              <th>SEASON</th>
-              {/* <th>HOME TEAM</th>
-              <th>AWAY TEAM</th>
-              <th>HOME TEAM SCORE</th>
-              <th>AWAY TEAM SCORE</th>
-              <th>REFEREE</th>
-              <th>COACH HOME TEAM</th>
-              <th>COACH AWAY TEAM</th>
-              <th>HALFS</th>
-              <th>STATUS</th> */}
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {user?.gameFixtures?.map((usery) => (
-              <tr key={usery._id}>
-                <td>{usery._id}</td>
-
-                <td>{usery.tournament}</td>
-                <td>{usery.league}</td>
-                <td>{usery.matchDay}</td>
-                <td>{usery.time}</td>
-                <td>{usery.date}</td>
-                <td>{usery.season}</td>
-                {/* <td>{usery.team1}</td>
-                <td>{usery.team2}</td>
-                <td>{usery.scoresTeam1}</td>
-                <td>{usery.scoresTeam2}</td>
-                <td>{usery.referee}</td>
-                <td>{usery.coachTeam1}</td>
-                <td>{usery.coachTeam2}</td>
-                <td>{usery.halfs}</td>
-                <td>{usery.status}</td> */}
-
-                <td>
-                  <Link to={`/admin/fixtures/${usery._id}/edit`}>
-                    <Button variant="light" className="btn-sm">
-                      <FaEdit />
-                    </Button>
-                  </Link>
-                  <Button variant="danger" className="btn-sm">
-                    <FaTrash />
-                  </Button>
-                </td>
-                <td>
-                  <Link
-                    to={`/admin/fixtures/commentary/${usery._id}/edit`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Update Commentary
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={`/admin/fixtures/gameInfo/${usery._id}/edit`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Update GameInfo
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={`/admin/fixtures/Stats/${usery._id}/edit`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Update GameStats
-                  </Link>
-                </td>
+      <Container>
+        <br />
+        <h4>Match Fixtures</h4>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
+              <tr>
+                <th>LEAGUE NAME</th>
+                <th>DIVISION</th>
+                <th>MATCH DAY </th>
+                <th>TIME</th>
+                <th>DATE</th>
+                <th>SEASON</th>
+                <th>HOME TEAM</th>
+                <th>AWAY TEAM</th>
+                <th>HOME TEAM SCORE</th>
+                <th>AWAY TEAM SCORE</th>
+                <th>REFEREE</th>
+                <th>COACH HOME TEAM</th>
+                <th>COACH AWAY TEAM</th>
+                <th>HALFS</th>
+                <th>STATUS</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-      <br />
-      <h4>Match Day2</h4>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
+            </thead>
+            <tbody>
+              {news?.gameFixtures?.map((usery) => (
+                <tr key={usery._id}>
+                  <td>{usery.league}</td>
+                  <td>{usery.division}</td>
+                  <td>{usery.matchDay}</td>
+                  <td>{usery.time}</td>
+                  <td>{usery.date}</td>
+                  <td>{usery.season}</td>
+                  <td>{usery.team1}</td>
+                  <td>{usery.team2}</td>
+                  <td>{usery.scoresTeam1}</td>
+                  <td>{usery.scoresTeam2}</td>
+                  <td>{usery.referee}</td>
+                  <td>{usery.coachTeam1}</td>
+                  <td>{usery.coachTeam2}</td>
+                  <td>{usery.halfs}</td>
+                  <td>{usery.status}</td>
 
-              <th>TOURNAMENT</th>
-              <th>LEAGUE NAME</th>
-              <th>MATCH DAY </th>
-              <th>TIME</th>
-              <th>DATE</th>
-              <th>SEASON</th>
-              <th>HOME TEAM</th>
-              <th>AWAY TEAM</th>
-              <th>HOME TEAM SCORE</th>
-              <th>AWAY TEAM SCORE</th>
-              <th>REFEREE</th>
-              <th>COACH HOME TEAM</th>
-              <th>COACH AWAY TEAM</th>
-              <th>HALFS</th>
-              <th>STATUS</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {news?.gameFixtures?.map((usery) => (
-              <tr key={usery._id}>
-                <td>{usery._id}</td>
-
-                <td>{usery.tournament}</td>
-                <td>{usery.league}</td>
-                <td>{usery.matchDay}</td>
-                <td>{usery.time}</td>
-                <td>{usery.date}</td>
-                <td>{usery.season}</td>
-                <td>{usery.team1}</td>
-                <td>{usery.team2}</td>
-                <td>{usery.scoresTeam1}</td>
-                <td>{usery.scoresTeam2}</td>
-                <td>{usery.referee}</td>
-                <td>{usery.coachTeam1}</td>
-                <td>{usery.coachTeam2}</td>
-                <td>{usery.halfs}</td>
-                <td>{usery.status}</td>
-
-                <td>
-                  <Link to={`/admin/fixtures/${usery._id}/edit`}>
-                    <Button variant="light" className="btn-sm">
-                      <FaEdit />
+                  <td>
+                    <Link to={`/admin/fixtures/${usery._id}/edit`}>
+                      <Button variant="light" className="btn-sm">
+                        <FaEdit />
+                      </Button>
+                    </Link>
+                    <Button variant="danger" className="btn-sm">
+                      <FaTrash />
                     </Button>
-                  </Link>
-                  <Button variant="danger" className="btn-sm">
-                    <FaTrash />
-                  </Button>
-                </td>
-                <td>
-                  <Link
-                    to={`/admin/fixtures/commentary/${usery._id}/edit`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Update Commentary
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={`/admin/fixtures/gameInfo/${usery._id}/edit`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Update GameInfo
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={`/admin/fixtures/Stats/${usery._id}/edit`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Update GameStats
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
+                  </td>
+                  <td>
+                    <Link
+                      to={`/admin/fixtures/commentary/${usery._id}/edit`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      Update Commentary
+                    </Link>
+                  </td>
+                  <td>
+                    <Link
+                      to={`/admin/fixtures/gameInfo/${usery._id}/edit`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      Update GameInfo
+                    </Link>
+                  </td>
+                  <td>
+                    <Link
+                      to={`/admin/fixtures/Stats/${usery._id}/edit`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      Update GameStats
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </Container>
     </AdminLayout>
   );
 };

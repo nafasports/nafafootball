@@ -14,8 +14,74 @@ import { Link } from "react-router-dom";
 import anfl from "../../../assets/images/anfl.png";
 import CheckOutSteps from "./CheckOutGame";
 import AdminLayout from "../AdminLayout";
+import { TextField } from "@mui/material";
+import { Box } from "@mui/system";
 const AdminPostMatch = () => {
   const navigate = useNavigate();
+  const [news, setNews] = useState([]);
+  const [neds, setNeds] = useState([]);
+  const [nedts, setNedts] = useState([]);
+  const [newer, setNewer] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/league"
+      );
+      console.log(data);
+      setNews(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/divisions"
+      );
+      console.log(data);
+      setNewer(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/coaches"
+      );
+      console.log(data);
+      setNedts(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "https://nafasports.herokuapp.com/api/teams"
+      );
+      console.log(data);
+      setNeds(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
   const [tournament, setTournament] = useState("");
   const [league, setLeague] = useState("");
   const [season, setSeason] = useState("");
@@ -144,150 +210,239 @@ const AdminPostMatch = () => {
           <div className="card-body py-5 px-md-5">
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
-                <h2 className="fw-bold mb-5">Create Fixtures</h2>
-                {loading && <CircularIndeterminate />}
+                <h2 className="fw-bold mb-5">Create a Match Fixture</h2>
+
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Tournament
-                        </label>
-                        <h5>{tournament} </h5>
-                        <select
-                          className="form-outline mb-4"
-                          value={tournament}
-                          onChange={(e) => setTournament(e.target.value)}
-                        >
-                          <option></option>
-                          <option>NAFL</option>
-                          <option>NFFL</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          League
-                        </label>
-                        <h5>{league} </h5>
-                        <select
-                          className="form-outline mb-4"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Select League"
+                          // defaultValue="EUR"
                           value={league}
                           onChange={(e) => setLeague(e.target.value)}
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
                         >
                           <option></option>
-                          <option>NSSFFL</option>
-                          <option>Academica</option>
-                          <option>Nigeria Premiership</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Game Match Day
-                        </label>
-                        <h5>{matchDay} </h5>
-                        <select
-                          className="form-outline mb-4"
-                          value={matchDay}
-                          onChange={(e) => setMatchDay(e.target.value)}
-                        >
-                          <option></option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
-                        </select>
-                      </div>
+                          {news?.leagues?.map((usery) => (
+                            <>
+                              <option>{usery.leagueName}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
 
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example2">
-                          Season
-                        </label>
-                        <h5>{season}</h5>
-                        <select
-                          className="form-control"
-                          value={season}
-                          onChange={(e) => setSeason(e.target.value)}
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Select Division"
+                          // defaultValue="EUR"
+                          value={division}
+                          onChange={(e) => setDivision(e.target.value)}
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
                         >
-                          <option>2022/2023</option>
-                        </select>
-                      </div>
+                          <option></option>
+                          {newer?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.DivisionName}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          State
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example1"
-                          className="form-control"
-                          placeholder="Select State"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Match Day"
+                          value={matchDay}
+                          onChange={(e) => setMatchDay(e.target.value)}
+                          defaultValue="Match Day"
+                        />
+                      </Box>
+                    </div>
+
+                    <div className="col-md-6 mb-4">
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Select Season"
+                          // defaultValue="EUR"
+                          value={season}
+                          onChange={(e) => setSeason(e.target.value)}
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {news?.leagues?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.season}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6 mb-4">
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Select State"
+                          // defaultValue="EUR"
                           value={state}
                           onChange={(e) => setState(e.target.value)}
-                        />
-                      </div>
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {news?.leagues?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.state}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Divison
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example1"
-                          className="form-control"
-                          placeholder="Select Tournament Division"
-                          value={division}
-                          onChange={(e) => setDivision(e.target.value)}
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Game Status"
+                          value={status}
+                          onChange={(e) => setStatus(e.target.value)}
+                          defaultValue="Game Status"
                         />
-                      </div>
+                      </Box>
                     </div>
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Home Team
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example1"
-                          className="form-control"
-                          placeholder="Select Home Team"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Home Team"
+                          // defaultValue="EUR"
                           value={team1}
                           onChange={(e) => setTeam1(e.target.value)}
-                        />
-                      </div>
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {neds?.teams?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.teamName}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example2">
-                          Away Team
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example2"
-                          className="form-control"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Away Team"
+                          // defaultValue="EUR"
                           value={team2}
                           onChange={(e) => setTeam2(e.target.value)}
-                        />
-                      </div>
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {neds?.teams?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.teamName}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
                   </div>
 
@@ -297,112 +452,156 @@ const AdminPostMatch = () => {
 
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Home Team Coach
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example1"
-                          className="form-control"
-                          placeholder="Select Home Team"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Home Team Coach"
+                          // defaultValue="EUR"
                           value={coachTeam1}
                           onChange={(e) => setCoachTeam1(e.target.value)}
-                        />
-                      </div>
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {nedts?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.name}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example2">
-                          Away Team Coach
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example2"
-                          className="form-control"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          label="Away Team Coach"
+                          // defaultValue="EUR"
                           value={coachTeam2}
                           onChange={(e) => setCoachTeam2(e.target.value)}
-                        />
-                      </div>
+                          SelectProps={{
+                            native: true,
+                          }}
+                          // helperText="Please select your currency"
+                        >
+                          <option></option>
+                          {nedts?.map((usery) => (
+                            <>
+                              <option></option>
+                              <option>{usery.name}</option>
+                            </>
+                          ))}
+                        </TextField>
+                      </Box>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Kick Off Time
-                        </label>
-                        <input
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Kick Off Time"
                           type="time"
-                          id="form3Example1"
-                          className="form-control"
                           value={time}
                           onChange={(e) => setTime(e.target.value)}
+                          defaultValue="Kick Off Time"
                         />
-                      </div>
+                      </Box>
                     </div>
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example2">
-                          Kick Off Date
-                        </label>
-                        <input
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          required
+                          id="outlined-required"
+                          // label="Match Date"
                           type="date"
-                          id="form3Example2"
-                          className="form-control"
                           value={date}
                           onChange={(e) => setDate(e.target.value)}
+                          defaultValue="Match Date"
                         />
-                      </div>
+                      </Box>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example1">
-                          Referee
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example1"
-                          className="form-control"
-                          placeholder="Select Home Team"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Referee"
                           value={referee}
                           onChange={(e) => setReferee(e.target.value)}
+                          defaultValue="Referee"
                         />
-                      </div>
+                      </Box>
                     </div>
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <label className="form-label" for="form3Example2">
-                          Halfs
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example2"
-                          className="form-control"
+                      <Box
+                        // component="form"
+                        sx={{
+                          "& .MuiTextField-root": { m: 1, width: "24ch " },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Halfs"
                           value={halfs}
                           onChange={(e) => setHalfs(e.target.value)}
+                          defaultValue="Halfs"
                         />
-                      </div>
+                      </Box>
                     </div>
                   </div>
 
-                  <div className="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">
-                      Game Status
-                    </label>
-                    <input
-                      type="text"
-                      id="form3Example3"
-                      className="form-control"
-                      value={status}
-                      onChange={(e) => setStatus(e.target.value)}
-                    />
-                  </div>
                   {/* <!-- Submit button --> */}
+                  {loading && <CircularIndeterminate />}
                   <button
                     type="submit"
+                    style={{ background: "green" }}
                     className="btn btn-primary btn-block mb-4"
                   >
                     Post a Match Fixture
