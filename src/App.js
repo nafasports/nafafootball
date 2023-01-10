@@ -97,6 +97,7 @@ import BlogAdminLayout from "./screens/SubAdminRoles/BlogAmin/BlogAdminLayout";
 import About from "./components/AboutUs/About";
 import CreateLeagueDivision from "./screens/AdminScreens/AdminDivision/CreateLeagueDivision";
 import AdminGetDivision from "./screens/AdminScreens/AdminDivision/AdminGetDivision";
+import PlayerPdfForm from "./PlayersApplication/PlayerPdfForm/PlayerPdfForm";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
@@ -262,6 +263,7 @@ function App() {
         <Route path="/about-us" element={<About />} />
         <Route path="/createDivision" element={<CreateLeagueDivision />} />
         <Route path="/getDivision" element={<AdminGetDivision />} />
+        <Route path="/playersRegForm" element={<PlayerPdfForm />} />
       </Routes>
     </div>
   );

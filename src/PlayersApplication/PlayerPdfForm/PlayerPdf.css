@@ -1,0 +1,17 @@
+.reg-p-main-div {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+
+  width: 100%;
+  height: 100vh;
+}
+.mp-divs {
+  width: 120%;
+}
+.bn-btn-dif {
+  background: linear-gradient(170deg, #429321 0%, #228b22 100%);
+}
