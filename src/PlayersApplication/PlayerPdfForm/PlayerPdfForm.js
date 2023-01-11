@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import nssfl1 from "../../assets/images/nssfl1.jpg";
+import nssfl3 from "../../assets/images/nssfl3.jpg";
 import "./PlayerPdf.css";
 import FileDownload from "js-file-download";
 import Axios from "axios";
@@ -37,7 +37,7 @@ const PlayerPdfForm = (props) => {
   const downloads = (e) => {
     e.preventDefault();
     Axios({
-      url: "https://nafasports.herokuapp.com/api/pdf",
+      url: "http://nafasports.herokuapp.com/api/pdf",
       method: "GET",
       responseType: "blob",
     }).then((res) => {
@@ -54,7 +54,7 @@ const PlayerPdfForm = (props) => {
       {/* /// */}
       <div
         style={{
-          backgroundImage: `url(${nssfl1})`,
+          backgroundImage: `url(${nssfl3})`,
         }}
         className="reg-p-main-div"
       >

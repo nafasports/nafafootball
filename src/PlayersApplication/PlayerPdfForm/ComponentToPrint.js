@@ -1,12 +1,12 @@
 import React from "react";
-import nssfl1 from "../../assets/images/nssfl1.jpg";
-import nssfl2 from "../../assets/images/nssfl2.jpg";
+import nssfl3 from "../../assets/images/nssfl3.jpg";
+import nssfl4 from "../../assets/images/nssfl4.jpg";
 export const ComponentToPrint = React.forwardRef((props, ref) => {
   return (
     <div ref={ref}>
       <div>
-        <img src={nssfl1} style={{ objectFit: "contain", width: "90%" }} />
-        <img src={nssfl2} style={{ objectFit: "contain", width: "90%" }} />
+        <img src={nssfl3} style={{ objectFit: "contain", width: "90%" }} />
+        <img src={nssfl4} style={{ objectFit: "contain", width: "90%" }} />
       </div>
     </div>
   );
