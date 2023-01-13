@@ -28,14 +28,19 @@ import {
   MdSupervisedUserCircle,
   MdTour,
 } from "react-icons/md";
-import { GiBabyfootPlayers, GiNewspaper, GiTeamUpgrade } from "react-icons/gi";
+import {
+  GiBabyfootPlayers,
+  GiMeepleGroup,
+  GiNewspaper,
+  GiTeamUpgrade,
+} from "react-icons/gi";
 import { RiTable2 } from "react-icons/ri";
 import { BsCameraVideo, BsFillImageFill } from "react-icons/bs";
 import nafas from "../../assets/images/nafas.png";
 import Collapsible from "react-collapsible";
 import { ImEnvelop, ImProfile } from "react-icons/im";
 import { FaUserTie } from "react-icons/fa";
-import { HiUserAdd } from "react-icons/hi";
+import { HiUserAdd, HiUserGroup } from "react-icons/hi";
 import { TbTournament } from "react-icons/tb";
 import { SiMajorleaguehacking } from "react-icons/si";
 import UserLIstScreen from "./AdminRoles/UserListScreen";
@@ -44,6 +49,7 @@ import NewsAdminFetch from "./newsBlog/Fetch/NewsAdminFetch";
 import AdminGetPost from "./newsBlog/AdminGetPost";
 import AdminProfile from "./AdminProfile";
 import { CgPathDivide } from "react-icons/cg";
+import { GrGroup } from "react-icons/gr";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -482,6 +488,116 @@ function ResponsiveDrawer(props) {
                       >
                         View League Divsion
                       </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <HiUserGroup
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                    color: "white",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Groups
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createGroups"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Groups
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to="/getGroups" style={{ textDecoration: "none" }}>
+                        View Groups
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+              <li style={{ display: "flex" }}>
+                <GiMeepleGroup
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    District
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      <Link
+                        to="/createDistrict"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create District
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/getDistrict"
+                        style={{ textDecoration: "none" }}
+                      >
+                        View District
+                      </Link>{" "}
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </li>
+            </div>
+          ) : localStorage.getItem("CoachId") ? (
+            <div>
+              <li style={{ display: "flex" }}>
+                <GiBabyfootPlayers
+                  style={{
+                    fontSize: "25px",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    style={{ backgroundColor: "#228B22", border: "#228B22" }}
+                  >
+                    Players
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="drop-d">
+                    <Dropdown.Item>
+                      {" "}
+                      <Link
+                        to="/createPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Player Profile
+                      </Link>{" "}
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link
+                        to="/draftPlayer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        View Player Profile
+                      </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

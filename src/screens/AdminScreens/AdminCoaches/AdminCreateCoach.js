@@ -102,9 +102,9 @@ const AdminCreateCoach = () => {
           //   const items = data;
           //   localStorage.setItem("User-Info", JSON.stringify(items));
 
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("CoachId", res.data._id);
 
-          localStorage.setItem("name", res.data.name);
+          localStorage.setItem("CoachName", res.data.name);
 
           localStorage.setItem("Following", res.data.following);
 

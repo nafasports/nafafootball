@@ -98,37 +98,45 @@ import About from "./components/AboutUs/About";
 import CreateLeagueDivision from "./screens/AdminScreens/AdminDivision/CreateLeagueDivision";
 import AdminGetDivision from "./screens/AdminScreens/AdminDivision/AdminGetDivision";
 import PlayerPdfForm from "./PlayersApplication/PlayerPdfForm/PlayerPdfForm";
+import CoachLayout from "./screens/CoachScreen/CoachLayout";
+import AdminCreateGroups from "./screens/AdminScreens/AdminGroups/AdminCreateGroups";
+import AdminDistrict from "./screens/AdminScreens/AdminDistrict/AdminDistrict";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
   return (
     <div style={{ background: "rgb(255, 255, 255)" }}>
-      {/* <div style={{ background: "#D9D9D9" }}></div> */}
-      {/* <BasicExample /> */}
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginScreen />} />
-        <Route
-          path="/admin/true"
-          element={Admin ? <AdminProfile /> : <HomePage />}
-        />
+        {/* /////Admin Protected routes */}
+        {Admin ? (
+          <Route path="/admin/true" element={<AdminProfile />} />
+        ) : (
+          <Route path="/" element={<HomePage />} />
+        )}
+        {Admin ? (
+          <Route path="/AdminProfile" element={<AdminProfile />} />
+        ) : (
+          <Route path="/" element={<HomePage />} />
+        )}
+        {Admin ? (
+          <Route path="/admin/:id" element={<AdminProfile />} />
+        ) : (
+          <Route path="/" element={<HomePage />} />
+        )}
+        {/* ///// */}
         <Route path="/Adminlogin" element={<AdminLogin />} />
         <Route path="/error/notAnAdmin" element={<ErrorNotAdmin />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route
-          path="/AdminProfile"
-          element={Admin ? <AdminProfile /> : <HomePage />}
-        />
+
         <Route path="/createCoach" element={<AdminCreateCoach />} />
         <Route path="/createOfficials" element={<AdminCreateOfficials />} />
         <Route path="/getOfficials" element={<AdminGetOfficials />} />
         <Route path="/getCoaches" element={<AdminGetCoaches />} />
-        <Route
-          path="/admin/:id"
-          element={Admin ? <AdminProfile /> : <HomePage />}
-        />
+        <Route path="/createGroups" element={<AdminCreateGroups />} />
+        <Route path="/createDistrict" element={<AdminDistrict />} />
         {/* <Route
           path="/admin/:id"
           element={Admin ? <AdminLayout /> : <HomePage />}
@@ -264,6 +272,11 @@ function App() {
         <Route path="/createDivision" element={<CreateLeagueDivision />} />
         <Route path="/getDivision" element={<AdminGetDivision />} />
         <Route path="/playersRegForm" element={<PlayerPdfForm />} />
+        {localStorage.getItem("CoachId") ? (
+          <Route path="/coachDashboard" element={<CoachLayout />} />
+        ) : localStorage.getItem("isAdmin") === "true" ? (
+          <Route path="/coachDashboard" element={<CoachLayout />} />
+        ) : null}
       </Routes>
     </div>
   );
