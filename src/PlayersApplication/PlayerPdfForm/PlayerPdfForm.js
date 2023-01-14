@@ -37,7 +37,7 @@ const PlayerPdfForm = (props) => {
   const downloads = (e) => {
     e.preventDefault();
     Axios({
-      url: "http://nafasports.herokuapp.com/api/pdf",
+      url: "https://nafasports.herokuapp.com/api/pdf",
       method: "GET",
       responseType: "blob",
     }).then((res) => {
