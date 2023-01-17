@@ -59,7 +59,7 @@ const NigeriaPremiership = () => {
       <div>
         <ListGroup className="grouplister2" style={{ borderRadius: "0px" }}>
           <ListGroup.Item className="listStep" style={{ color: "gold" }}>
-            Nigerian Premiership Matches
+            NSSFFL AKWA IBOM
             {/* <Swith step1 step2 step3 step4 step5 step6 step7 /> */}
           </ListGroup.Item>
           {/* <ListGroup.Item> */}
@@ -73,7 +73,7 @@ const NigeriaPremiership = () => {
                 ?.filter((value) => {
                   if (filtered === "Team Player") {
                     return value;
-                  } else if (value.league === "Nigerian Premiership") {
+                  } else if (value.league === "NSSFFL akwa ibom") {
                     return value;
                   }
                 })

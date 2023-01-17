@@ -56,6 +56,11 @@ const LoginScreen = () => {
     };
 
     axios
+      // .post(
+      //   "https://ec2-54-167-95-178.compute-1.amazonaws.com:8080/login",
+      //   data,
+      //   headers
+      // )
       .post("https://nafasports.herokuapp.com/api/auth/login", data, headers)
 
       .then((res) => {

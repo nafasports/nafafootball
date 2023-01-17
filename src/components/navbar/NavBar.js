@@ -204,8 +204,33 @@ function BasicExample() {
                   </Link>
                 </Nav.Link>
 
-                {localStorage.getItem("isAdmin") ===
-                "true" ? null : username ? (
+                {localStorage.getItem("isAdmin") === "true" ? (
+                  <Nav.Link
+                    style={{
+                      textDecoration: "none",
+                      color: "whitesmoke",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItem: "center",
+                      textAlign: "cenetr",
+                    }}
+                    className="n-linkz"
+                  >
+                    <Link
+                      to="/admin/true"
+                      style={{
+                        textDecoration: "none",
+                        color: "whitesmoke",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItem: "center",
+                        textAlign: "cenetr",
+                      }}
+                    >
+                      Admin
+                    </Link>
+                  </Nav.Link>
+                ) : username ? (
                   <Dropdown style={{ backgroudColor: "green" }}>
                     <Dropdown.Toggle
                       id="dropdown-basic"
@@ -243,7 +268,7 @@ function BasicExample() {
                       }}
                     >
                       {" "}
-                      Fans
+                      Login
                     </Link>
                   </Nav.Link>
                 )}

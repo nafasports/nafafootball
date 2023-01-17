@@ -120,7 +120,7 @@ const LiveGameLayout = (props) => {
                                 color: "inherit",
                               }}
                             >
-                              Nigerian Premiership
+                              NSSFFL AKWA IBOM
                             </Link>
                           </ListGroup.Item>
 
@@ -133,13 +133,13 @@ const LiveGameLayout = (props) => {
                                 color: "inherit",
                               }}
                             >
-                              ACADEMICA
+                              NSSFL OSUN
                             </Link>
                           </ListGroup.Item>
                           <ListGroup.Item>FEMALE PROFESSIONAL</ListGroup.Item>
                           <ListGroup.Item>NSSFFL JUNIOR</ListGroup.Item>
-                          <ListGroup.Item>LAGOS</ListGroup.Item>
-                          <ListGroup.Item>KD LEAGUE</ListGroup.Item>
+                          <ListGroup.Item>NSSFFL LAGOS</ListGroup.Item>
+                          <ListGroup.Item> NSSFFL KADUNA</ListGroup.Item>
                           <ListGroup.Item>e.t.c</ListGroup.Item>
                         </ListGroup>
                       </div>

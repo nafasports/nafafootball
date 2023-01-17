@@ -7,7 +7,7 @@ const Swith = ({ step1, step2, step3, step4, step5, step6, step7 }) => {
   return (
     <div>
       <div className="nava-diva">
-        <Nav.Item className="item-nava">
+        {/* <Nav.Item className="item-nava">
           {step1 ? (
             <Nav.Link>
               <Link
@@ -76,7 +76,7 @@ const Swith = ({ step1, step2, step3, step4, step5, step6, step7 }) => {
               29th
             </Nav.Link>
           )}
-        </Nav.Item>
+        </Nav.Item> */}
         <Nav.Item className="item-nava">
           {step4 ? (
             <Nav.Link>
@@ -90,7 +90,7 @@ const Swith = ({ step1, step2, step3, step4, step5, step6, step7 }) => {
                   color: step7 ? "gold" : null,
                 }}
               >
-                Today
+                All GAMES
               </Link>
             </Nav.Link>
           ) : (
@@ -100,11 +100,11 @@ const Swith = ({ step1, step2, step3, step4, step5, step6, step7 }) => {
                 color: !step7 ? "initial" : "gold",
               }}
             >
-              Today
+              ALL GAMES
             </Nav.Link>
           )}
         </Nav.Item>
-        <Nav.Item className="item-nava">
+        {/* <Nav.Item className="item-nava">
           {step5 ? (
             <Nav.Link>
               {" "}
@@ -160,7 +160,7 @@ const Swith = ({ step1, step2, step3, step4, step5, step6, step7 }) => {
           ) : (
             <Nav.Link disabled>2nd</Nav.Link>
           )}
-        </Nav.Item>
+        </Nav.Item> */}
       </div>
     </div>
   );
