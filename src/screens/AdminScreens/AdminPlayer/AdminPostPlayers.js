@@ -15,28 +15,34 @@ import piccy from "../../../assets/images/piccy.jpg";
 const AdminPostPlayers = () => {
   const navigate = useNavigate();
   const [playerID, setPlayerID] = useState("");
-  const [playerLincense, setPlayerLincense] = useState("");
-  const [surName, setSurName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [playerCategory, setPlayerCategory] = useState("Team Player");
-  const [otherNames, setOtherNames] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [stateOfOrigin, setStateOfOrigin] = useState("");
-  const [residence, setResidence] = useState("");
-  const [school, setSchool] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [playerPosition, setPlayerPosition] = useState("");
-  const [benchPressWeight, setBenchPressWeight] = useState("");
-  const [squotWeight, setSquotWeight] = useState("");
-  const [fouthyYardDash, setFouthyYardDash] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [passport, setPassport] = useState("");
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState("");
+
+  const [benchPressWeight, setBenchPressWeight] = useState(0);
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
-  const [refereeName, setRefereeName] = useState("");
-  const [refereePhoneNumber, setRefereePhoneNumber] = useState("");
-  const [refereeContact, setRefereeContact] = useState("");
+
+  const [firstName, setFirstName] = useState("");
+  const [height, setHeight] = useState(0);
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [playerAddress, setPlayerAddress] = useState("");
+
+  const [playerId, setPlayerId] = useState(0);
+
+  const [playerName, setPlayerName] = useState("");
+  const [playerPosition, setPlayerPosition] = useState("");
+  const [playerUserName, setPlayerUserName] = useState("");
+  const [referreeName, setReferreeName] = useState("");
+  const [referreeNumber, setReferreeNumber] = useState("");
+  const [squotWeight, setSquotWeight] = useState(0);
+  const [stateOfOrigin, setStateOfOrigin] = useState("");
+
+  const [stateResidence, setStateResidence] = useState("");
+  const [teamId, setTeamId] = useState(0);
+  const [teamName, setTeamName] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [image, setImage] = useState("");
+  const [teamState, setTeamState] = useState("");
 
   // const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -46,11 +52,13 @@ const AdminPostPlayers = () => {
   const uploadimage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convert2base64(file);
-    setPassport(base64);
+    setImage(base64);
+
     // setImage({ ...image, image: base64 });
     console.log(base64);
     // const reader = new FileReader();
   };
+
   const convert2base64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -67,30 +75,28 @@ const AdminPostPlayers = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const data = {
-      playerID: playerID,
-      passport: passport,
-      //   image: image,
-      playerLincense: playerLincense,
-      surName: surName,
-      firstName: firstName,
-      otherNames: otherNames,
-      playerCategory: playerCategory,
-      status: status,
-      dateOfBirth: dateOfBirth,
-      stateOfOrigin: stateOfOrigin,
-      residence: residence,
-      email: email,
-      school: school,
-      height: height,
-      weight: weight,
-      playerPosition: playerPosition,
-      phoneNumber: phoneNumber,
-      refereeContact: refereeContact,
-      refereeName: refereeName,
-      refereePhoneNumber: refereePhoneNumber,
-      squotWeight: squotWeight,
-      fouthyYardDash: fouthyYardDash,
+      age: age,
       benchPressWeight: benchPressWeight,
+      email: email,
+      firstName: firstName,
+      gender: gender,
+      height: height,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      playerAddress: playerAddress,
+      playerId: playerId,
+      playerName: playerName,
+      playerPosition: playerPosition,
+      playerUserName: playerUserName,
+      referreeName: referreeName,
+      referreeNumber: referreeNumber,
+      squotWeight: squotWeight,
+      stateOfOrigin: stateOfOrigin,
+      stateResidence: stateResidence,
+      teamId: teamId,
+      teamName: teamName,
+      teamState: teamState,
+      weight: weight,
     };
 
     setLoading(true);
@@ -103,38 +109,38 @@ const AdminPostPlayers = () => {
     };
 
     axios
-      .post("https://nafasports.herokuapp.com/api/players", data, headers)
+      .post(
+        "http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/player/registerplayer",
+        data,
+        headers
+      )
 
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
+          setAge("");
+          setBenchPressWeight("");
+          setEmail("");
+          setFirstName("");
+          setGender("");
+          setLastName("");
           setPhoneNumber("");
-          setSchool("");
-          setPlayerLincense("");
+          setPlayerAddress("");
+          setPlayerId("");
+          setPlayerName("");
+          setPlayerPosition("");
+          setPlayerUserName("");
+          setPlayerUserName("");
+          setReferreeName("");
+          setReferreeNumber("");
           setSquotWeight("");
           setStateOfOrigin("");
-          setPassport("");
-          setSurName("");
-          setResidence("");
-          setFirstName("");
-          setRefereeContact("");
-          setRefereeName("");
-          setRefereePhoneNumber("");
-          setStatus("");
-          setEmail("");
-          setHeight("");
+          setStateResidence("");
+          setTeamId("");
+          setTeamState("");
+          setTeamName("");
           setWeight("");
-          setPlayerCategory("");
-          setFouthyYardDash("");
-          setPlayerID("");
-          setOtherNames("");
-          setDateOfBirth("");
-
-          setBenchPressWeight("");
-
-          setPlayerPosition("");
-
           //   const items = data;
           //   localStorage.setItem("User-Info", JSON.stringify(items));
 
@@ -146,7 +152,7 @@ const AdminPostPlayers = () => {
 
           console.log(res.data);
           toast.success("Post is sucessful");
-          navigate("/draftPlayer");
+          navigate("/");
         } else {
           toast.error(res.data.error);
         }
@@ -159,7 +165,6 @@ const AdminPostPlayers = () => {
   return (
     <AdminLayout>
       <div class="container rounded bg-white mt-5 mb-5">
-        {loading && <CircularIndeterminate />}
         <form onSubmit={submitHandler}>
           <div class="row">
             <div class="col-md-3 border-right">
@@ -192,41 +197,41 @@ const AdminPostPlayers = () => {
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4 class="text-right">Profile Settings</h4>
                 </div>
-                <div class="row mt-2">
-                  <div class="col-md-6">
-                    <label class="labels">Surname</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Surname "
-                      value={surName}
-                      onChange={(e) => setSurName(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label class="labels">First Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value={firstName}
-                      placeholder="First Name"
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                  </div>
+
+                <div class="col-md-12 mb-4">
+                  <label class="labels">SURNAME</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Surname "
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
                 </div>
+                <div class="col-md-12 mb-4">
+                  <label class="labels">OTHER NAMES</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value={lastName}
+                    placeholder="Other Names"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+
                 <div class="row mt-3">
-                  <div class="col-md-12">
-                    <label class="labels">Other Names</label>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">Age</label>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control"
-                      placeholder="enter other name"
-                      value={otherNames}
-                      onChange={(e) => setOtherNames(e.target.value)}
+                      placeholder="Your Age"
+                      value={age}
+                      onChange={(e) => setAge(e.target.value)}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">State of Origin</label>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">STATE OF ORIGIN</label>
                     <input
                       type="text"
                       class="form-control"
@@ -235,19 +240,29 @@ const AdminPostPlayers = () => {
                       onChange={(e) => setStateOfOrigin(e.target.value)}
                     />
                   </div>
-
-                  <div class="col-md-12">
-                    <label class="labels">Residential Address</label>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">CONTACT ADRESS</label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="enter residential address "
-                      value={residence}
-                      onChange={(e) => setResidence(e.target.value)}
+                      placeholder="contact adress"
+                      value={playerAddress}
+                      onChange={(e) => setPlayerAddress(e.target.value)}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">phone Number</label>
+
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">STATE OF RESIDENCE</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="state of residence "
+                      value={stateResidence}
+                      onChange={(e) => setStateResidence(e.target.value)}
+                    />
+                  </div>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">PHONE NUMBER</label>
                     <input
                       type="text"
                       class="form-control"
@@ -256,18 +271,51 @@ const AdminPostPlayers = () => {
                       onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">School</label>
+                  <div class="col-md-12 mb-4">
+                    <div class="form-group">
+                      <label class="labels" for="form_need">
+                        Please specify your gender *
+                      </label>
+                      <select
+                        id="form_need"
+                        name="need"
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        class="form-control"
+                        required="required"
+                        data-error="Please specify your need."
+                      >
+                        <option value="" selected disabled>
+                          --Select Your Gender--
+                        </option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-4">
+                    <label class="labels"> TEAM NAME</label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="enter NAFA School Level"
-                      value={school}
-                      onChange={(e) => setSchool(e.target.value)}
+                      placeholder="Your Team Name"
+                      value={teamName}
+                      onChange={(e) => setTeamName(e.target.value)}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">Email Address</label>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels"> TEAM STATE</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Your Team State"
+                      value={teamState}
+                      onChange={(e) => setTeamState(e.target.value)}
+                    />
+                  </div>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">EMAIL ADRESS</label>
                     <input
                       type="text"
                       class="form-control"
@@ -276,58 +324,53 @@ const AdminPostPlayers = () => {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">Player ID</label>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">USERNAME</label>
                     <input
                       type="text"
                       class="form-control"
-                      value={playerID}
-                      onChange={(e) => setPlayerID(e.target.value)}
+                      placeholder="User Name"
+                      value={playerUserName}
+                      onChange={(e) => setPlayerUserName(e.target.value)}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">Player's Lincense</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value={playerLincense}
-                      onChange={(e) => setPlayerLincense(e.target.value)}
-                    />
+                  <div class="col-md-12 mb-4">
+                    <div class="form-group">
+                      <label class="labels" for="form_need">
+                        Please specify your playing position *
+                      </label>
+                      <select
+                        id="form_need"
+                        name="need"
+                        value={playerPosition}
+                        onChange={(e) => setPlayerPosition(e.target.value)}
+                        class="form-control"
+                        required="required"
+                        data-error="Please specify your need."
+                      >
+                        <option value="" selected disabled>
+                          --Select --
+                        </option>
+                        <option>Center</option>
+                        <option>Guard</option>
+                        <option>Wide Receiver</option>
+                        <option>Running Back</option>
+                        <option>Quater Back</option>
+                        <option>Conner Back</option>
+                        <option>MainGuard</option>
+                        <option>Guard</option>
+                        <option>Linebacker</option>
+                        <option>Safety</option>
+                        <option>Rusher</option>
+                        <option>Hibrid(Ofense & Defense)</option>
+                      </select>
+                    </div>
                   </div>
 
-                  <div class="col-md-12">
-                    <label class="labels">Date of Birth</label>
+                  <div class="col-md-12 mb-4">
+                    <label class="labels">HEIGHT</label>
                     <input
-                      type="date"
-                      class="form-control"
-                      value={dateOfBirth}
-                      onChange={(e) => setDateOfBirth(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-12">
-                    <label class="labels">FouthyYardDash</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="fouthyYardDash"
-                      value={fouthyYardDash}
-                      onChange={(e) => setFouthyYardDash(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-12">
-                    <label class="labels">Player Position</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Player Position"
-                      value={playerPosition}
-                      onChange={(e) => setPlayerPosition(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-12">
-                    <label class="labels">Height</label>
-                    <input
-                      type="text"
+                      type="number"
                       class="form-control"
                       placeholder="Height"
                       value={height}
@@ -335,47 +378,36 @@ const AdminPostPlayers = () => {
                     />
                   </div>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-md-6">
-                    <label class="labels">weight</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter your Weight"
-                      value={weight}
-                      onChange={(e) => setWeight(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label class="labels">Status</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value={status}
-                      placeholder="eg. Retired or Active"
-                      onChange={(e) => setStatus(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label class="labels">Squote Weight</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value={squotWeight}
-                      placeholder="squote weight"
-                      onChange={(e) => setSquotWeight(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label class="labels">Bench Press Weight </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value={benchPressWeight}
-                      placeholder="squote weight"
-                      onChange={(e) => setBenchPressWeight(e.target.value)}
-                    />
-                  </div>
+
+                <div class="col-md-12 mb-4">
+                  <label class="labels">WEIGHT</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Enter your Weight"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                  />
+                </div>
+                <div class="col-md-12 mb-4">
+                  <label class="labels">SQUOTWEIGHT</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Enter your squot Weight"
+                    value={squotWeight}
+                    onChange={(e) => setSquotWeight(e.target.value)}
+                  />
+                </div>
+                <div class="col-md-12 mb-4">
+                  <label class="labels">BENCHPRESSWEIGHT</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Enter your bench press Weight"
+                    value={benchPressWeight}
+                    onChange={(e) => setBenchPressWeight(e.target.value)}
+                  />
                 </div>
                 {/* <div class="mt-5 text-center">
                 <button class="btn btn-primary profile-button" type="button">
@@ -384,7 +416,7 @@ const AdminPostPlayers = () => {
               </div> */}
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 ">
               <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience">
                   <span>Player Referee Section</span>
@@ -393,39 +425,29 @@ const AdminPostPlayers = () => {
                   </span>
                 </div>
                 <br />
-                <div class="col-md-12">
-                  <label class="labels">Player Referee Name</label>
+                <div class="col-md-12 mb-4">
+                  <label class="labels">PLAYER REFEREE NAME</label>
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Name of shortee"
-                    value={refereeName}
-                    onChange={(e) => setRefereeName(e.target.value)}
+                    value={referreeName}
+                    onChange={(e) => setReferreeName(e.target.value)}
                   />
                 </div>{" "}
-                <br />
-                <div class="col-md-12">
-                  <label class="labels">Player Referee PhoneNumber</label>
+                <div class="col-md-12 mb-4">
+                  <label class="labels">PLAYER REFEREE PHONENUMBER</label>
                   <input
                     type="text"
                     class="form-control"
                     placeholder="additional details"
-                    value={refereePhoneNumber}
-                    onChange={(e) => setRefereePhoneNumber(e.target.value)}
-                  />
-                </div>
-                <div class="col-md-12">
-                  <label class="labels">Player Referee Address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="additional details"
-                    value={refereeContact}
-                    onChange={(e) => setRefereeContact(e.target.value)}
+                    value={referreeNumber}
+                    onChange={(e) => setReferreeNumber(e.target.value)}
                   />
                 </div>
                 <div class="mt-5 text-center">
-                  <button class="btn btn-primary " type="submit">
+                  {loading && <CircularIndeterminate />}
+                  <button class="btn btn-primary greent " type="submit">
                     Save Profile
                   </button>
                   <ToastContainer />

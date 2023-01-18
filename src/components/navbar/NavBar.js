@@ -230,6 +230,34 @@ function BasicExample() {
                       Admin
                     </Link>
                   </Nav.Link>
+                ) : localStorage.getItem("CoachId") ? (
+                  <>
+                    <Nav.Link
+                      style={{
+                        textDecoration: "none",
+                        color: "whitesmoke",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItem: "center",
+                        textAlign: "cenetr",
+                      }}
+                      className="n-linkz"
+                    >
+                      <Link
+                        to="/coachDashboard"
+                        style={{
+                          textDecoration: "none",
+                          color: "whitesmoke",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItem: "center",
+                          textAlign: "cenetr",
+                        }}
+                      >
+                        Coach
+                      </Link>
+                    </Nav.Link>
+                  </>
                 ) : username ? (
                   <Dropdown style={{ backgroudColor: "green" }}>
                     <Dropdown.Toggle

@@ -1,18 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BasicExample from "../../../components/navbar/NavBar";
-import "../AdminPlayer/AdminPostPlayer.css";
+// import "../../screens/AdminScreens/AdminPlayer/AdminPostPlayer.css";
+import "./CoachReg.css";
 import FileBase64 from "react-file-base64";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { BsArrow90DegLeft } from "react-icons/bs";
-import AdminLayout from "../AdminLayout";
-import CircularIndeterminate from "../../../components/Progress";
-import piccy from "../../../assets/images/piccy.jpg";
-const AdminCreateCoach = () => {
+
+import piccy from "../../assets/images/piccy.jpg";
+import CircularIndeterminate from "../../components/Progress";
+import BasicExample from "../../components/navbar/NavBar";
+import Footer from "../../components/Footer/Footer";
+import { TextField } from "@mui/material";
+const CoachRegistration = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -63,7 +66,7 @@ const AdminCreateCoach = () => {
       email: email,
 
       teamState: teamState,
-      photos: photos,
+      // photos: photos,
       coachTeam: coachTeam,
     };
 
@@ -97,7 +100,7 @@ const AdminCreateCoach = () => {
           setEmail("");
 
           setTeamState("");
-          setPhotos("");
+          // setPhotos("");
           setCoachTeam("");
 
           //   const items = data;
@@ -122,7 +125,8 @@ const AdminCreateCoach = () => {
       });
   };
   return (
-    <AdminLayout>
+    <div>
+      <BasicExample />
       <div class="container rounded bg-white mt-5 mb-5">
         <form onSubmit={submitHandler}>
           <div class="row">
@@ -274,8 +278,9 @@ const AdminCreateCoach = () => {
           </div>
         </form>
       </div>
-    </AdminLayout>
+      <Footer />
+    </div>
   );
 };
 
-export default AdminCreateCoach;
+export default CoachRegistration;

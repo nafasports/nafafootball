@@ -101,6 +101,7 @@ import PlayerPdfForm from "./PlayersApplication/PlayerPdfForm/PlayerPdfForm";
 import CoachLayout from "./screens/CoachScreen/CoachLayout";
 import AdminCreateGroups from "./screens/AdminScreens/AdminGroups/AdminCreateGroups";
 import AdminDistrict from "./screens/AdminScreens/AdminDistrict/AdminDistrict";
+import CoachRegistration from "./Coaches/RegisterCoach/CoachRegistration";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
@@ -251,10 +252,7 @@ function App() {
           element={<NigeriaPremiership />}
         />
         <Route path="/draftPlayer" element={<DraftPlayerScreen />} />
-        <Route
-          path="/TeamPlayerReg"
-          element={userId ? <TeamPlayersApp /> : <LoginScreen />}
-        />
+
         <Route path="/postStanding" element={<AdminStandingPost />} />
         <Route
           path="/admin/ActivateUser/:id/edit"
@@ -272,11 +270,14 @@ function App() {
         <Route path="/createDivision" element={<CreateLeagueDivision />} />
         <Route path="/getDivision" element={<AdminGetDivision />} />
         <Route path="/playersRegForm" element={<PlayerPdfForm />} />
+
         {localStorage.getItem("CoachId") ? (
           <Route path="/coachDashboard" element={<CoachLayout />} />
         ) : localStorage.getItem("isAdmin") === "true" ? (
           <Route path="/coachDashboard" element={<CoachLayout />} />
         ) : null}
+        <Route path="/coachReg" element={<CoachRegistration />} />
+        <Route path="/TeamPlayerReg" element={<TeamPlayersApp />} />
       </Routes>
     </div>
   );
