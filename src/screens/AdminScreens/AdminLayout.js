@@ -563,7 +563,7 @@ function ResponsiveDrawer(props) {
                 </Dropdown>
               </li>
             </div>
-          ) : localStorage.getItem("CoachId") ? (
+          ) : localStorage.getItem("CoachEmail") ? (
             <div>
               <li style={{ display: "flex" }}>
                 <GiBabyfootPlayers

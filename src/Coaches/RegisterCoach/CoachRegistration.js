@@ -108,9 +108,10 @@ const CoachRegistration = () => {
 
           localStorage.setItem("CoachId", res.data._id);
 
-          localStorage.setItem("CoachName", res.data.name);
+          localStorage.setItem("CoachEmail", res.data.email);
 
-          localStorage.setItem("Following", res.data.following);
+          localStorage.setItem("coachFirstName", res.data.firstName);
+           localStorage.setItem("coachUserName", res.data.coachUserName);
 
           console.log(res.data);
           toast.success("Post is sucessful");

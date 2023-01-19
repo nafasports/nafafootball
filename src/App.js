@@ -271,7 +271,7 @@ function App() {
         <Route path="/getDivision" element={<AdminGetDivision />} />
         <Route path="/playersRegForm" element={<PlayerPdfForm />} />
 
-        {localStorage.getItem("CoachId") ? (
+        {localStorage.getItem("CoachEmail") ? (
           <Route path="/coachDashboard" element={<CoachLayout />} />
         ) : localStorage.getItem("isAdmin") === "true" ? (
           <Route path="/coachDashboard" element={<CoachLayout />} />
