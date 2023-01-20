@@ -120,46 +120,29 @@ const AdminDistrict = () => {
 
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "24ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="District Id"
-                          value={DistrictId}
-                          onChange={(e) => setDistrictId(e.target.value)}
-                          //   defaultValue="League Name"
-                        />
-                      </Box>
-                    </div>
 
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "24ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="District Letter"
-                          value={DistrictLetter}
-                          onChange={(e) => setDistrictLetter(e.target.value)}
-                          //   defaultValue="League Name"
-                        />
-                      </Box>
-                    </div>
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      className="input-dic-div"
+                      required
+                      id="outlined-required"
+                      label="District Id"
+                      value={DistrictId}
+                      onChange={(e) => setDistrictId(e.target.value)}
+                      //   defaultValue="League Name"
+                    />
+                  </div>
+
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      className="input-dic-div"
+                      required
+                      id="outlined-required"
+                      label="District Letter"
+                      value={DistrictLetter}
+                      onChange={(e) => setDistrictLetter(e.target.value)}
+                      //   defaultValue="League Name"
+                    />
                   </div>
 
                   {loading && <CircularIndeterminate />}

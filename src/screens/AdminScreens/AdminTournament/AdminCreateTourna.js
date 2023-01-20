@@ -15,6 +15,7 @@ import anfl from "../../../assets/images/anfl.png";
 import AdminLayout from "../AdminLayout";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
+import "./AdminCTourna.css";
 const AdminCreateTourna = () => {
   const navigate = useNavigate();
   const [tournament, setTournament] = useState("");
@@ -127,50 +128,40 @@ const AdminCreateTourna = () => {
 
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "25ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <div className="form-outline mb-4">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Tournament Name"
-                            value={tournament}
-                            onChange={(e) => setTournament(e.target.value)}
-                            defaultValue="Tournament Name"
-                          />
-                        </div>
-                        <div className="form-outline mb-4">
-                          <label className="form-label" for="form2Example22">
-                            Choose an image file
-                          </label>
-                          <input
-                            id="form2Example22"
-                            className="form-control"
-                            type="file"
-                            multiple
-                            accept=".jpeg, .png, .jpg, "
-                            onChange={(e) => uploadimage(e)}
-                          />
-                        </div>
-                        {loading && <CircularIndeterminate />}
-                        <button
-                          type="submit"
-                          className="btn btn-primary btn-block mb-4"
-                          style={{ background: "green" }}
-                        >
-                          Create a Tournament
-                        </button>
-                      </Box>
-                    </div>
+
+                  <div className="form-outline mb-4">
+                    <TextField
+                      className="input-dic-div"
+                      required
+                      id="outlined-required"
+                      label="Tournament Name"
+                      value={tournament}
+                      onChange={(e) => setTournament(e.target.value)}
+                      defaultValue="Tournament Name"
+                    />
                   </div>
+                  <div className="form-outline mb-4">
+                    {/* <label className="form-label" for="form2Example22">
+                      Choose an image file
+                    </label> */}
+                    <TextField
+                      required
+                      className="input-dic-div"
+                      id="outlined-multiline-static"
+                      type="file"
+                      // multiple
+                      accept=".jpeg, .png, .jpg, "
+                      onChange={(e) => uploadimage(e)}
+                    />
+                  </div>
+                  {loading && <CircularIndeterminate />}
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-block mb-4"
+                    style={{ background: "green" }}
+                  >
+                    Create a Tournament
+                  </button>
 
                   {/* <!-- Password input --> */}
 

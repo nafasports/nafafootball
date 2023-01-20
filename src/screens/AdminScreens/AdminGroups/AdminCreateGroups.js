@@ -61,7 +61,7 @@ const AdminCreateGroups = () => {
     };
 
     axios
-      .post("https://nafasports.herokuapp.com/api/league", data, headers)
+      .post("https://nafasports.herokuapp.com//api/league", data, headers)
 
       .then((res) => {
         console.log(res.data);
@@ -126,86 +126,52 @@ const AdminCreateGroups = () => {
 
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "24ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Group Id"
-                          value={GroupId}
-                          onChange={(e) => setGroupId(e.target.value)}
-                          defaultValue="League Name"
-                        />
-                      </Box>
-                    </div>
 
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "24ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Group Name"
-                          value={GroupName}
-                          onChange={(e) => setGroupName(e.target.value)}
-                          //   defaultValue="League Name"
-                        />
-                      </Box>
-                    </div>
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      className="input-dic-div"
+                      required
+                      id="outlined-required"
+                      label="Group Id"
+                      value={GroupId}
+                      onChange={(e) => setGroupId(e.target.value)}
+                      defaultValue="League Name"
+                    />
                   </div>
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "24ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Group Letter"
-                          value={GroupLetter}
-                          onChange={(e) => setGroupLetter(e.target.value)}
-                          // defaultValue="State"
-                        />
-                      </Box>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <Box
-                        // component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "24ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Group State"
-                          value={GroupState}
-                          onChange={(e) => setGroupState(e.target.value)}
-                          // defaultValue="Season"
-                        />
-                      </Box>
-                    </div>
+
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      required
+                      className="input-dic-div"
+                      id="outlined-required"
+                      label="Group Name"
+                      value={GroupName}
+                      onChange={(e) => setGroupName(e.target.value)}
+                      //   defaultValue="League Name"
+                    />
+                  </div>
+
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      className="input-dic-div"
+                      required
+                      id="outlined-required"
+                      label="Group Letter"
+                      value={GroupLetter}
+                      onChange={(e) => setGroupLetter(e.target.value)}
+                      // defaultValue="State"
+                    />
+                  </div>
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      required
+                      className="input-dic-div"
+                      id="outlined-required"
+                      label="Group State"
+                      value={GroupState}
+                      onChange={(e) => setGroupState(e.target.value)}
+                      // defaultValue="Season"
+                    />
                   </div>
 
                   {loading && <CircularIndeterminate />}

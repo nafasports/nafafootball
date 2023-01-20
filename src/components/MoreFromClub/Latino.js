@@ -15,48 +15,49 @@ const Latino = ({ poster }) => {
       }}
     >
       {/* <Carousel> */}
-      <Row
-        className="row-mpk"
-        style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
-      >
-        {poster?.map((posty, index) => (
-          <Col key={index} sm={12} md={6} lg={4} xl={3}>
-            <div class="col-md-3 njt">
-              <div class="card-sl">
-                <div class="card-image">
-                  <img
-                    src={posty?.image}
-                    alt="ncjj"
+      <div className="container">
+        <div
+          className="row-mpk"
+          // style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
+        >
+          {poster?.map((posty, index) => (
+            <div key={index} sm={12} md={6} lg={4} xl={3}>
+              <div class="col-md-3 njt">
+                <div class="card-sl">
+                  <div class="card-image">
+                    <img
+                      src={posty?.image}
+                      alt="ncjj"
+                      style={{
+                        width: "100%",
+                        height: "25vh",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                  <div
+                    className="card-body"
                     style={{
-                      width: "100%",
-                      height: "25vh",
-                      objectFit: "cover",
+                      width: "auto",
+                      height: "20vh",
+                      // objectFit: "cover",
                     }}
-                  />
-                </div>
-                <div
-                  className="card-body"
-                  style={{
-                    width: "auto",
-                    height: "20vh",
-                    // objectFit: "cover",
-                  }}
-                >
-                  <a class="card-action" href="#">
-                    <i class="fa fa-heart"></i>
-                  </a>
-                  <div class="card-heading">{posty?.caption}</div>
-                  <div class="card-text">{posty?.desc} </div>
-                </div>
-                <button
-                  class="card-button"
-                  style={{
-                    textDecoration: "none",
-                    borderColor: "transparent",
-                  }}
-                >
-                  Read More...
-                  {/* <Link
+                  >
+                    <a class="card-action" href="#">
+                      <i class="fa fa-heart"></i>
+                    </a>
+                    <div class="card-heading">{posty?.caption}</div>
+                    {/* <div class="card-text">{posty?.desc} </div> */}
+                  </div>
+                  <button
+                    class="card-button"
+                    style={{
+                      textDecoration: "none",
+                      borderColor: "transparent",
+                    }}
+                  >
+                    Read More...
+                    {/* <Link
                     to={`/newsDetails/${posty?._id}`}
                     style={{
                       textDecoration: "none",
@@ -66,10 +67,10 @@ const Latino = ({ poster }) => {
                   >
                     Read More...
                   </Link> */}
-                </button>
+                  </button>
+                </div>
               </div>
-            </div>
-            {/* <div className="card" style={{ width: "18rem" }}>
+              {/* <div className="card" style={{ width: "18rem" }}>
               <img
                 src={posty?.image}
                 className="card-img-top"
@@ -116,9 +117,10 @@ const Latino = ({ poster }) => {
                 </p>
               </div>
             </div> */}
-          </Col>
-        ))}
-      </Row>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

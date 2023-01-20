@@ -1,6 +1,14 @@
 .ape {
   width: 100%;
 }
+.row-mpk {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
 .njt {
   margin-bottom: 30px;
   margin-left: 10px;
@@ -23,6 +31,7 @@
   .row-mpk {
     margin-left: auto;
     margin-right: auto;
+    justify-content: center;
   }
   .card {
     display: flex;

@@ -79,8 +79,8 @@ const UserLIstScreen = () => {
   return (
     <AdminLayout>
       <Container>
-        <h1 style={{ fontSize: "25px" }}>Users </h1>
-        <h2 style={{ fontSize: "25px" }}>Client Roles</h2>
+        <h1 style={{ fontSize: "25px" }}>Users/Client Roles </h1>
+
         <div className="container">
           {loading ? (
             <Loader />

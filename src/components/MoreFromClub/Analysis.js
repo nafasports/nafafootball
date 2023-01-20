@@ -43,7 +43,7 @@ const Analysis = ({ spain }) => {
                 <i class="fa fa-heart"></i>
               </a>
               <div class="card-heading">{spain?.caption}</div>
-              <div class="card-text">{spain?.desc} </div>
+              {/* <div class="card-text">{spain?.desc} </div> */}
             </div>
             <button
               class="card-button"

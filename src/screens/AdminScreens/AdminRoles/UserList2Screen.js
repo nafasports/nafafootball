@@ -69,9 +69,9 @@ const UserLIst2Screen = () => {
           justifyContent: "center",
         }}
       >
-        Users{" "}
+        Users/Client Roles{" "}
       </h1>
-      <h2 style={{ fontSize: "25px" }}>Client Roles</h2>
+      <h2 style={{ fontSize: "25px" }}></h2>
       <Container>
         {loading ? (
           <Loader />

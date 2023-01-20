@@ -84,7 +84,7 @@ const GetImage = () => {
         <Message variant="danger">Failed</Message>
       ) : (
         <div>
-          <h6 className="Div-h6-v">Photo Gallery</h6>
+          <h6 className="Div-h6-v">PHOTO GALLERY</h6>
           <hr className="hr" />
           {/* <Carousel> */}
           <div>

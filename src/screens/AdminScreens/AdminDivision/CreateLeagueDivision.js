@@ -145,62 +145,44 @@ const CreateLeagueDivision = () => {
 
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
-                  <div className="row">
-                    <Box
-                      // component="form"
-                      sx={{
-                        "& .MuiTextField-root": { m: 1, width: "25ch " },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                    >
-                      <div className="col-md-6 mb-4">
-                        <TextField
-                          id="outlined-select-currency-native"
-                          select
-                          label="Select League"
-                          // defaultValue="EUR"
-                          value={leagueName}
-                          onChange={(e) => setLeagueName(e.target.value)}
-                          SelectProps={{
-                            native: true,
-                          }}
-                          // helperText="Please select your currency"
-                        >
-                          <option></option>
-                          {news?.leagues?.map((usery) => (
-                            <>
-                              <option></option>
-                              <option>{usery.leagueName}</option>
-                            </>
-                          ))}
-                        </TextField>
-                      </div>
 
-                      <div className="col-md-6 mb-4">
-                        <div className="form-outline mb-4">
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="League Division Name"
-                            value={DivisionName}
-                            onChange={(e) => setDivisionName(e.target.value)}
-                            defaultValue="League Division Name"
-                          />
-                        </div>
-                      </div>
-                    </Box>
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      required
+                      className="input-dic-div"
+                      id="outlined-select-currency-native"
+                      select
+                      label="Select League"
+                      // defaultValue="EUR"
+                      value={leagueName}
+                      onChange={(e) => setLeagueName(e.target.value)}
+                      SelectProps={{
+                        native: true,
+                      }}
+                      // helperText="Please select your currency"
+                    >
+                      <option></option>
+                      {news?.leagues?.map((usery) => (
+                        <>
+                          <option></option>
+                          <option>{usery.leagueName}</option>
+                        </>
+                      ))}
+                    </TextField>
                   </div>
 
-                  {/* <Box
-                    sx={{
-                      "& .MuiTextField-root": { m: 1, width: "36ch" },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                  >
-                    
-                  </Box> */}
+                  <div className="col-md-6 mb-4">
+                    <TextField
+                      className="input-dic-div"
+                      required
+                      id="outlined-required"
+                      label="League Division Name"
+                      value={DivisionName}
+                      onChange={(e) => setDivisionName(e.target.value)}
+                      defaultValue="League Division Name"
+                    />
+                  </div>
+
                   {loading && <CircularIndeterminate />}
                   {/* <!-- Submit button --> */}
                   <button

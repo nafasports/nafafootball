@@ -97,16 +97,18 @@ const GetPost = () => {
       <div style={{ marginTop: "40px" }}>
         <h6 className="Div-h6-v">GOSSIP</h6>
         <hr className="hr" />
-        <Row
-          className="row-mp"
-          style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
-        >
-          {spanish?.posts?.map((spain) => (
-            <Col key={spain._id} sm={12} md={6} lg={4} xl={3}>
-              <Analysis spain={spain} />
-            </Col>
-          ))}
-        </Row>
+        <div className="container">
+          <div
+            className="row-mpk"
+            // style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
+          >
+            {spanish?.posts?.map((spain) => (
+              <div key={spain._id} sm={12} md={6} lg={4} xl={3}>
+                <Analysis spain={spain} />
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="more-analysis">MORE ANALYSIS</div>
       </div>
     </div>

@@ -7,15 +7,16 @@
 }
 .Div-h6-v {
   display: flex;
-
-  font-size: large;
+  justify-content: center;
+  margin-top: 70px;
+  font-size: 25px;
   font-weight: 700;
   color: black;
-  margin-left: 75px;
+  /* margin-left: 75px; */
   /* color: black; */
 }
 .hr {
-  width: 95%;
+  width: 86%;
   /* display: flex;
   justify-self: center;
   margin: auto;
