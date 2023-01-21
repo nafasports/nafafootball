@@ -5,7 +5,9 @@ h1 {
 label {
   color: #333;
 }
-
+.jddh {
+  cursor: pointer;
+}
 .btn-send {
   font-weight: 300;
   text-transform: uppercase;
