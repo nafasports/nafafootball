@@ -20,7 +20,7 @@ const AdminTeamPlayers = ({ users }) => {
           if (searchTitle === "") {
             return value;
           } else if (
-            value.surName.toLowerCase().includes(searchTitle.toLowerCase())
+            value.firstName.toLowerCase().includes(searchTitle.toLowerCase())
           ) {
             return value;
           }
@@ -28,11 +28,10 @@ const AdminTeamPlayers = ({ users }) => {
         .filter((value) => {
           if (filtered === "Team Player") {
             return value;
-          } else if (value.playerCategory === "Team Player") {
+          } else if (value.teamName === "") {
             return value;
           }
         })
-
         .map((usy, index) => (
           <div>
             {searchTitle ? (
@@ -41,7 +40,7 @@ const AdminTeamPlayers = ({ users }) => {
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <div>
                       <Image
-                        src={usy?.passport}
+                        src={usy?.photos}
                         fluid
                         thumbnail
                         style={{
@@ -59,14 +58,14 @@ const AdminTeamPlayers = ({ users }) => {
                         <h6>
                           {" "}
                           <Link
-                            to={`/adminPlayerProfile/${usy?._id}`}
+                            to={`/adminPlayerProfile/${usy?.playerId}`}
                             style={{
                               textDecoration: "none",
                               marginLeft: "10px",
                               color: "black",
                             }}
                           >
-                            {usy?.surName} {usy?.firstName}
+                            {usy?.firstName} {usy?.lastName}
                           </Link>
                         </h6>
                       </div>
@@ -92,10 +91,9 @@ const AdminTeamPlayers = ({ users }) => {
       <Table striped bordered hover responsive className="table-sm">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Surname</th>
-            <th>Firts Name</th>
-            <th>Players Category</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Players Team Name</th>
             <th></th>
           </tr>
         </thead>
@@ -105,38 +103,39 @@ const AdminTeamPlayers = ({ users }) => {
               if (searchTitle === "") {
                 return value;
               } else if (
-                value.surName.toLowerCase().includes(searchTitle.toLowerCase())
+                value.firstName
+                  .toLowerCase()
+                  .includes(searchTitle.toLowerCase())
               ) {
                 return value;
               }
             })
-            .filter((value) => {
-              if (filtered === "Team Player") {
-                return value;
-              } else if (value.playerCategory === "Team Player") {
-                return value;
-              }
-            })
+            // .filter((value) => {
+            //   if (filtered === "Team Player") {
+            //     return value;
+            //   } else if (value.playerCategory === "Team Player") {
+            //     return value;
+            //   }
+            // })
 
             .map((usy, index) => (
               <>
                 <tr key={usy._id}>
-                  <td>{usy._id}</td>
                   <td>
-                    <Link to={`/adminPlayerProfile/${usy._id}`}>
-                      {usy?.surName}
+                    <Link to={`/adminPlayerProfile/${usy.playerId}`}>
+                      {usy?.firstName}
                     </Link>{" "}
                   </td>
 
                   <td>
-                    <Link to={`/adminPlayerProfile/${usy._id}`}>
-                      {usy?.firstName}
+                    <Link to={`/adminPlayerProfile/${usy.playerId}`}>
+                      {usy?.lastName}
                     </Link>
                   </td>
-                  <td>{usy?.playerCategory}</td>
+                  <td>{usy?.teamName}</td>
 
                   <td>
-                    <Link to={`/playerDrafting/${usy._id}`}>
+                    <Link to={`/playerDrafting/${usy.playerId}`}>
                       <Button
                         variant="light"
                         className="btn-sm"

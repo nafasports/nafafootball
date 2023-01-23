@@ -11,23 +11,24 @@ import AdminLayout from "../AdminLayout";
 
 const AdminPlayerDetails = () => {
   const [PlayersDetails, setPlayerDetails] = useState({});
-  const { id } = useParams();
+
   // const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(true);
+  const { playerId } = useParams();
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await axios.get(
-        `https://nafasports.herokuapp.com/api/players/${id}`
+        `http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/player/getplayerbyid/?${playerId}`
       );
-
+      console.log(data);
       setPlayerDetails(data);
       setLoading(false);
       setError(false);
       //   localStorage.setItem("All-Users", JSON.stringify(data));
     };
     fetchUsers();
-  }, [id]);
+  }, [playerId]);
   return (
     <AdminLayout>
       <div class="container rounded bg-white mt-5 mb-5">
@@ -47,7 +48,7 @@ const AdminPlayerDetails = () => {
                   src={PlayersDetails.passport}
                 />
               </div>
-              <span class="font-weight-bold">{PlayersDetails.surName} </span>
+              <span class="font-weight-bold">{PlayersDetails.firstName} </span>
               <span class="text-black-50">{PlayersDetails.email} </span>
               <span> </span>
             </div>
@@ -60,11 +61,11 @@ const AdminPlayerDetails = () => {
               <div class="row mt-2">
                 <div class="col-md-6">
                   <label class="labels">Surname</label>
-                  <div>{PlayersDetails.surName} </div>
+                  <div>{PlayersDetails.firstName} </div>
                 </div>
                 <div class="col-md-6">
                   <label class="labels">First Name</label>
-                  <div>{PlayersDetails.firstName} </div>
+                  <div>{PlayersDetails.lastName} </div>
                 </div>
               </div>
               <div class="row mt-3">

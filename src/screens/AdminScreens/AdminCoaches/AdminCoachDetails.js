@@ -11,14 +11,14 @@ import AdminLayout from "../AdminLayout";
 
 const AdminCoachDetails = () => {
   const [PlayersDetails, setPlayerDetails] = useState({});
-  const { id } = useParams();
+  const { coachId } = useParams();
   // const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(true);
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await axios.get(
-        `https://nafasports.herokuapp.com/api/coaches/${id}`
+        `http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/coaches/getcoach/${coachId}`
       );
 
       setPlayerDetails(data);
@@ -27,7 +27,7 @@ const AdminCoachDetails = () => {
       //   localStorage.setItem("All-Users", JSON.stringify(data));
     };
     fetchUsers();
-  }, [id]);
+  }, [coachId]);
   return (
     <AdminLayout>
       <div class="container rounded bg-white mt-5 mb-5">
@@ -44,10 +44,13 @@ const AdminCoachDetails = () => {
                     border: "1px solid grey",
                     objectFit: "cover",
                   }}
-                  src={PlayersDetails.passport}
+                  src={PlayersDetails.photos}
                 />
               </div>
-              <span class="font-weight-bold">{PlayersDetails.name} </span>
+              <span class="font-weight-bold">
+                {PlayersDetails.firstName}
+                {PlayersDetails.lastName}{" "}
+              </span>
               <span class="text-black-50">{PlayersDetails.email} </span>
               <span> </span>
             </div>
@@ -60,18 +63,20 @@ const AdminCoachDetails = () => {
               <div class="row mt-2">
                 <div class="col-md-6">
                   <label class="labels">Full Name</label>
-                  <div>{PlayersDetails.name} </div>
+                  <div>
+                    {PlayersDetails.firstName} {PlayersDetails.lastName}
+                  </div>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col-md-12">
                   <label class="labels">Contact Address</label>
-                  <div>{PlayersDetails.contactAdress} </div>
+                  <div>{PlayersDetails.coachResidence} </div>
                 </div>
 
                 <div class="col-md-12">
                   <label class="labels">Coach Lincense</label>
-                  <div>{PlayersDetails.license} </div>
+                  <div>{PlayersDetails.coachLiceneId} </div>
                 </div>
                 <div class="col-md-12">
                   <label class="labels">phone Number</label>
@@ -84,17 +89,17 @@ const AdminCoachDetails = () => {
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Team</label>
-                  <div>{PlayersDetails.team} </div>
+                  <div>{PlayersDetails.coachTeam} </div>
                 </div>
 
                 <div class="col-md-6">
-                  <label class="labels">Coach Status </label>
-                  <div>{PlayersDetails.status} </div>
+                  <label class="labels">Team State </label>
+                  <div>{PlayersDetails.teamState} </div>
                 </div>
-                <div class="col-md-12">
+                {/* <div class="col-md-12">
                   <label class="labels">Date</label>
                   <div>{PlayersDetails.date} </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -16,9 +16,12 @@ const SignUp = () => {
   // const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userLastName, setUserLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [userFirstName, setUserFirstName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userConfirmPassword, setUserConfirmPassword] = useState("");
 
   const [mode, setMode] = useState("password");
   const [loading, setLoading] = useState(false);
@@ -45,9 +48,16 @@ const SignUp = () => {
     setLoading(true);
     const data = {
       email: email,
-      username: username,
-      password: password,
-      confirmPassword: confirmPassword,
+
+      phoneNumber: phoneNumber,
+
+      userConfirmPassword: userConfirmPassword,
+
+      userFirstName: userFirstName,
+
+      userLastName: userLastName,
+      userName: userName,
+      userPassword: userPassword,
     };
 
     const headers = {
@@ -58,26 +68,34 @@ const SignUp = () => {
     };
 
     axios
-      .post("https://nafasports.herokuapp.com/api/auth/register", data, headers)
+      .post(
+        "http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/registration/registerNewUser",
+        data,
+        headers
+      )
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
           setEmail("");
-          setUsername("");
-          setPassword("");
-          setConfirmPassword("");
+          setPhoneNumber("");
+          setUserName("");
+          setUserPassword("");
+          setUserConfirmPassword("");
+          setUserFirstName("");
+          setUserLastName("");
           //   const items = data;
           //   localStorage.setItem("User-Info", JSON.stringify(items));
 
           localStorage.setItem("token", res.data.token);
 
-          localStorage.setItem("name", res.data.name);
-          localStorage.setItem("userId", res.data._id);
+          localStorage.setItem("FirstName", res.data.userFirstName);
+          localStorage.setItem("Id", res.data.id);
+          localStorage.setItem("userId", res.data.userId);
           localStorage.setItem("isAdmin", res.data.isAdmin);
           localStorage.setItem("email", res.data.email);
           localStorage.setItem("roles", res.data.roles);
-          localStorage.setItem("username", res.data.username);
+          localStorage.setItem("username", res.data.userName);
 
           console.log(res.data);
           toast.success("Sign Up successful");
@@ -109,9 +127,22 @@ const SignUp = () => {
                         <img src={nafas} alt="gh" className="img-footer-img" />
                         <h4 className="mt-1 mb-5 pb-1">We are NAFA Football</h4>
                       </div>
-                      {loading && <CircularIndeterminate />}
+
                       <form onSubmit={submitHandler}>
                         <p>Please Sign Up to your account</p>
+                        <div className="form-outline mb-4">
+                          <label className="form-label" for="form2Example11">
+                            User Name
+                          </label>
+                          <input
+                            type="text"
+                            id="form2Example15"
+                            className="form-control"
+                            placeholder="userName "
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                          />
+                        </div>
 
                         <div className="form-outline mb-4">
                           <label className="form-label" for="form2Example11">
@@ -128,18 +159,43 @@ const SignUp = () => {
                         </div>
                         <div className="form-outline mb-4">
                           <label className="form-label" for="form2Example11">
-                            Username
+                            User FirstName
                           </label>
                           <input
                             type="text"
                             id="form2Example15"
                             className="form-control"
-                            placeholder="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="user firstName "
+                            value={userFirstName}
+                            onChange={(e) => setUserFirstName(e.target.value)}
                           />
                         </div>
-
+                        <div className="form-outline mb-4">
+                          <label className="form-label" for="form2Example11">
+                            User LastName
+                          </label>
+                          <input
+                            type="text"
+                            id="form2Example15"
+                            className="form-control"
+                            placeholder="user Last Name"
+                            value={userLastName}
+                            onChange={(e) => setUserLastName(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label className="form-label" for="form2Example11">
+                            Phone Number
+                          </label>
+                          <input
+                            type="text"
+                            id="form2Example15"
+                            className="form-control"
+                            placeholder="User Phone Number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                          />
+                        </div>
                         <div className="form-outline mb-4">
                           <label className="form-label" for="form2Example22">
                             Password
@@ -148,8 +204,8 @@ const SignUp = () => {
                             type="password"
                             id="form2Example227"
                             className="form-control"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={userPassword}
+                            onChange={(e) => setUserPassword(e.target.value)}
                           />
                         </div>
 
@@ -161,10 +217,14 @@ const SignUp = () => {
                             type="Password"
                             id="form2Example22"
                             className="form-control"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder="confirm password"
+                            value={userConfirmPassword}
+                            onChange={(e) =>
+                              setUserConfirmPassword(e.target.value)
+                            }
                           />
                         </div>
+                        {loading && <CircularIndeterminate />}
 
                         <div className="text-center pt-1 mb-5 pb-1">
                           <button

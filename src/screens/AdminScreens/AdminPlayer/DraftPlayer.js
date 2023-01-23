@@ -97,7 +97,7 @@ const DraftPlayer = () => {
           <div className="card-body py-5 px-md-5">
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
-                <h2 className="fw-bold mb-5">Create a Team</h2>
+                <h2 className="fw-bold mb-5">Draft Player</h2>
                 {loading && <CircularIndeterminate />}
                 <form onSubmit={submitHandler}>
                   {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
@@ -109,7 +109,7 @@ const DraftPlayer = () => {
                         </label>
                         <h5>{playerCategory} </h5>
                         <select
-                          className="form-outline mb-4"
+                          className="form-outline md-12 mb-4"
                           value={playerCategory}
                           onChange={(e) => setPlayerCategory(e.target.value)}
                         >
@@ -141,6 +141,7 @@ const DraftPlayer = () => {
                   <button
                     type="submit"
                     className="btn btn-primary btn-block mb-4"
+                    style={{ background: "green" }}
                   >
                     Draft Player
                   </button>

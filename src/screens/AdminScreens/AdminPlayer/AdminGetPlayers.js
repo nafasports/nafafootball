@@ -15,7 +15,7 @@ const AdminGetPlayers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/players"
+        "https://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/player/getallplayers"
       );
 
       setUsers(data);
@@ -46,12 +46,12 @@ const AdminGetPlayers = () => {
             {loading ? (
               <Loader />
             ) : (
-              users
+              users?.data
                 ?.filter((value) => {
                   if (searchTitle === "") {
                     return value;
                   } else if (
-                    value.surName
+                    value.firstName
                       .toLowerCase()
                       .includes(searchTitle.toLowerCase())
                   ) {
@@ -62,10 +62,10 @@ const AdminGetPlayers = () => {
                   <div>
                     {searchTitle ? (
                       <div className="ch-ply">
-                        <div key={usy._id}>
+                        <div key={usy.id}>
                           <div className="dsp-ply">
                             <Image
-                              src={usy.passport}
+                              src={usy.photos}
                               fluid
                               thumbnail
                               className="img-dsp"
@@ -73,14 +73,14 @@ const AdminGetPlayers = () => {
                             <h6>
                               {" "}
                               <Link
-                                to={`/AdminplayerProfile/${usy._id}`}
+                                to={`/AdminplayerProfile/${usy.id}`}
                                 style={{
                                   textDecoration: "none",
                                   marginLeft: "10px",
                                   color: "black",
                                 }}
                               >
-                                {usy.surName} {usy.firstName}
+                                {usy.firstName} {usy.lastName}
                               </Link>
                             </h6>
                           </div>

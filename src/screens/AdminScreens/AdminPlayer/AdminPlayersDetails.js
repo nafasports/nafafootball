@@ -12,14 +12,14 @@ import CircularIndeterminate from "../../../components/Progress";
 
 const AdminPlayersDetails = () => {
   const [PlayersDetails, setPlayerDetails] = useState({});
-  const { id } = useParams();
+  const { playerId } = useParams();
   // const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(true);
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await axios.get(
-        `https://nafasports.herokuapp.com/api/players/${id}`
+        `http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/player/getplayerbyid/?${playerId}`
       );
       console.log(data);
       setPlayerDetails(data);
@@ -28,7 +28,7 @@ const AdminPlayersDetails = () => {
       //   localStorage.setItem("All-Users", JSON.stringify(data));
     };
     fetchUsers();
-  }, [id]);
+  }, [playerId]);
   return (
     <AdminLayout>
       <div class="container rounded bg-white mt-5 mb-5">
@@ -45,10 +45,10 @@ const AdminPlayersDetails = () => {
                     border: "1px solid grey",
                     objectFit: "cover",
                   }}
-                  src={PlayersDetails.passport}
+                  src={PlayersDetails.photos}
                 />
               </div>
-              <span class="font-weight-bold">{PlayersDetails.surName} </span>
+              <span class="font-weight-bold">{PlayersDetails.firstName} </span>
               <span class="text-black-50">{PlayersDetails.email} </span>
               <span> </span>
             </div>
@@ -60,23 +60,23 @@ const AdminPlayersDetails = () => {
               </div>
               <div class="row mt-2">
                 <div class="col-md-6">
-                  <label class="labels">Surname</label>
-                  <div>{PlayersDetails.surName} </div>
-                </div>
-                <div class="col-md-6">
                   <label class="labels">First Name</label>
                   <div>{PlayersDetails.firstName} </div>
                 </div>
+                <div class="col-md-6">
+                  <label class="labels">Last Name</label>
+                  <div>{PlayersDetails.lastName} </div>
+                </div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-12">
+                {/* <div class="col-md-12">
                   <label class="labels">Other Names</label>
                   <div>{PlayersDetails.otherNames} </div>
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Player Category</label>
                   <div>jfjjdjk </div>
-                </div>
+                </div> */}
                 <div class="col-md-12">
                   <label class="labels">State of Origin</label>
                   <div>{PlayersDetails.stateOfOrigin} </div>

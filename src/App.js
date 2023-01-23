@@ -111,11 +111,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginScreen />} />
         {/* /////Admin Protected routes */}
-        {Admin ? (
-          <Route path="/admin/true" element={<AdminProfile />} />
-        ) : (
-          <Route path="/" element={<HomePage />} />
-        )}
+
+        <Route
+          path="/admin/true"
+          element={Admin ? <AdminProfile /> : <HomePage />}
+        />
+
         {Admin ? (
           <Route path="/AdminProfile" element={<AdminProfile />} />
         ) : (
@@ -278,6 +279,7 @@ function App() {
         ) : null}
         <Route path="/coachReg" element={<CoachRegistration />} />
         <Route path="/TeamPlayerReg" element={<TeamPlayersApp />} />
+        <Route path="/AdminCoachProfile/:id" element={<AdminCoachDetails />} />
       </Routes>
     </div>
   );

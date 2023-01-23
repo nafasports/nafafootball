@@ -34,9 +34,9 @@ const DraftPlayerScreen = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await axios.get(
-        "https://nafasports.herokuapp.com/api/players"
+        "http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/api/player/getallplayers"
       );
-
+      console.log(data);
       setUsers(data);
       setLoading(false);
       setError(false);
@@ -46,8 +46,8 @@ const DraftPlayerScreen = () => {
   }, []);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = users?.slice(firstPostIndex, lastPostIndex);
-  const currentyPosts = users?.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = users?.data?.slice(firstPostIndex, lastPostIndex);
+  const currentyPosts = users?.data?.slice(firstPostIndex, lastPostIndex);
   return (
     <AdminLayout>
       <div className="div-plys">
@@ -66,7 +66,7 @@ const DraftPlayerScreen = () => {
             <AdminPlayerDrafting users={currentPosts} />
 
             <Pagination
-              totalPosts={users?.length}
+              totalPosts={users?.data?.length}
               postsPerPage={postsPerPage}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
@@ -76,7 +76,7 @@ const DraftPlayerScreen = () => {
             <AdminTeamPlayers users={currentyPosts} />
 
             <Pagination
-              totalPosts={users?.length}
+              totalPosts={users?.data?.length}
               postsPerPage={postsPerPage}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}

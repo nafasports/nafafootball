@@ -10,14 +10,14 @@ import nafas from "../assets/images/nafas.png";
 import CircularIndeterminate from "../components/Progress";
 import BasicExample from "../components/navbar/NavBar";
 import Footer from "../components/Footer/Footer";
-// toast.configure();
+toast.configure();
 const LoginScreen = () => {
   const navigate = useNavigate();
   // const redirect = location.search ? location.search.split("=")[1] : "/";
 
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
 
-  const [password, setPassword] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   const [mode, setMode] = useState("password");
   const [loading, setLoading] = useState(false);
@@ -43,9 +43,9 @@ const LoginScreen = () => {
     e.preventDefault();
     setLoading(true);
     const data = {
-      email: email,
+      userName: userName,
 
-      password: password,
+      userPassword: userPassword,
     };
 
     const headers = {
@@ -56,20 +56,20 @@ const LoginScreen = () => {
     };
 
     axios
-      // .post(
-      //   "https://ec2-54-167-95-178.compute-1.amazonaws.com:8080/login",
-      //   data,
-      //   headers
-      // )
-      .post("https://nafasports.herokuapp.com/api/auth/login", data, headers)
+
+      .post(
+        "http://ec2-54-224-226-216.compute-1.amazonaws.com:8080/auth/login",
+        data,
+        headers
+      )
 
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
-          setEmail("");
+          setUserName("");
 
-          setPassword("");
+          setUserPassword("");
 
           //   const items = data;
           //   localStorage.setItem("User-Info", JSON.stringify(items));
@@ -85,9 +85,7 @@ const LoginScreen = () => {
           localStorage.setItem("roles", res.data.roles);
 
           console.log(res.data);
-          toast.success("Login Sucessful", {
-            position: toast.POSITION.TOP_LEFT,
-          });
+          toast("Login Sucessful");
           {
             localStorage.getItem("isAdmin") === "true"
               ? navigate("/Adminlogin")
@@ -128,21 +126,21 @@ const LoginScreen = () => {
                         <img src={nafas} alt="gh" className="img-footer-img" />
                         <h4 className="mt-1 mb-5 pb-1">We are NAFA Football</h4>
                       </div>
-                      {loading && <CircularIndeterminate />}
+
                       <form onSubmit={submitHandler}>
                         <p>Please login to your account</p>
 
                         <div className="form-outline mb-4">
                           <label className="form-label" for="form2Example11">
-                            Username
+                            User Name
                           </label>
                           <input
-                            type="email"
+                            type="text"
                             id="form2Example11"
                             className="form-control"
-                            placeholder=" email address"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="User Name"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
                           />
                         </div>
 
@@ -154,11 +152,11 @@ const LoginScreen = () => {
                             type="password"
                             id="form2Example22"
                             className="form-control"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={userPassword}
+                            onChange={(e) => setUserPassword(e.target.value)}
                           />
                         </div>
-
+                        {loading && <CircularIndeterminate />}
                         <div className="text-center pt-1 mb-5 pb-1">
                           <button
                             className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
