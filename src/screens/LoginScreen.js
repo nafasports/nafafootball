@@ -10,7 +10,7 @@ import nafas from "../assets/images/nafas.png";
 import CircularIndeterminate from "../components/Progress";
 import BasicExample from "../components/navbar/NavBar";
 import Footer from "../components/Footer/Footer";
-toast.configure();
+// toast.configure();
 const LoginScreen = () => {
   const navigate = useNavigate();
   // const redirect = location.search ? location.search.split("=")[1] : "/";
@@ -63,29 +63,30 @@ const LoginScreen = () => {
         headers
       )
 
-      .then((res) => {
-        console.log(res.data);
+      .then((data) => {
+        console.log(data);
         setLoading(false);
-        if (res.data) {
+        if (data) {
           setUserName("");
 
           setUserPassword("");
 
           //   const items = data;
           //   localStorage.setItem("User-Info", JSON.stringify(items));
+          localStorage.setItem("LoginDetails", JSON.stringify(data));
+          localStorage.setItem("token", data.token);
 
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userFirstName", data.data.userFirstName);
+          localStorage.setItem("userId", data.id);
+          localStorage.setItem("isAdmin", data.isAdmin);
+          localStorage.setItem("email", data.email);
 
-          localStorage.setItem("name", res.data.name);
-          localStorage.setItem("userId", res.data._id);
-          localStorage.setItem("isAdmin", res.data.isAdmin);
-          localStorage.setItem("email", res.data.email);
+          localStorage.setItem("username", data.userName);
+          localStorage.setItem("roles", data.roles);
 
-          localStorage.setItem("username", res.data.username);
-          localStorage.setItem("roles", res.data.roles);
-
-          console.log(res.data);
-          toast("Login Sucessful");
+          console.log(data);
+          toast.success(data.status);
+          toast.success("Login Sucessful");
           {
             localStorage.getItem("isAdmin") === "true"
               ? navigate("/Adminlogin")
@@ -100,7 +101,7 @@ const LoginScreen = () => {
               : navigate("/");
           }
         } else {
-          toast.error(res.data.error);
+          toast.error(data.error);
         }
       })
       .catch((err) => {
@@ -150,6 +151,7 @@ const LoginScreen = () => {
                           </label>
                           <input
                             type="password"
+                            placeholder="password"
                             id="form2Example22"
                             className="form-control"
                             value={userPassword}
